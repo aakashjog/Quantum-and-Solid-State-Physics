@@ -43,6 +43,7 @@
 \usepackage{chronology}
 \usepackage{qtree}
 \usepackage{varwidth}
+\usepackage{asymptote}
 
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
 
@@ -667,10 +668,11 @@ The major factors which affect the conductivity of a material are
 	\end{tabular}
 \end{table}
 
+Silicon is usually used as a semiconductor, as it
 \begin{enumerate}
-	\item Easily available, hence economical
-	\item Performs better at higher temperatures
-	\item Can be converted to silica on heating
+	\item is easily available, hence economical
+	\item performs better at higher temperatures
+	\item can be converted to silica on heating
 \end{enumerate}
 
 \begin{figure}[H]
@@ -863,5 +865,600 @@ According to Bohr's model of the atom, electrons can have discrete energy levels
 The electrons in an atom are arranged in the order of filling electronic shells, given by the Aufbau Principle.\\
 The energy of a free electron is called $E_{\textnormal{vac}}$.
 This is used as a reference energy.
+
+\section{Atomic Bonding}
+
+\begin{figure}[h]
+	\centering
+	\Tree
+	[
+		.Bonding
+		[
+			.{Metallic bonding}
+		]
+		[
+			.{Ionic bonding}
+		]
+		[
+			.{Covalent bonding}
+			{
+				\begin{varwidth}{4cm}
+					sharing of electrons with nearest neighbours
+				\end{varwidth}
+			}
+		]
+	]
+	\caption{Types of Atomic Bonds}
+\end{figure}
+
+\subsection{Covalent Bonds in Silicon}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\rn{0.3};
+		\def\1r{1};
+		\def\2r{2};
+		\def\3r{3};
+
+		\begin{scope}
+			\filldraw (0,0) circle (\rn);
+		\end{scope}
+
+		\begin{scope}
+			\draw (0,0) circle (\1r);
+
+			\filldraw ($ (0,0) + ({0 + 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({0 - 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 + 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 - 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({180 + 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({180 - 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({270 + 10}:\1r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({270 - 10}:\1r) $) circle (2pt);
+		\end{scope}
+
+		\begin{scope}
+			\draw (0,0) circle (\2r);
+
+			\filldraw ($ (0,0) + ({0 + 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({0 - 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 + 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 - 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({180 + 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({180 - 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({270 + 10}:\2r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({270 - 10}:\2r) $) circle (2pt);
+		\end{scope}
+
+		\begin{scope}
+			\draw (0,0) circle (\3r);
+
+			\filldraw ($ (0,0) + ({0 + 10}:\3r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({0 - 10}:\3r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 + 10}:\3r) $) circle (2pt);
+			\filldraw ($ (0,0) + ({90 - 10}:\3r) $) circle (2pt);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Arrangement of electrons in a silicon atom, in shells according to Bohr's model}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\xMIN{0};
+		\def\xMAX{3};
+		\def\yMIN{0};
+		\def\yMAX{3};
+
+		\begin{scope}
+			\foreach \x in {\xMIN,...,\xMAX}
+			{
+				\draw [xshift = 5pt] (\x,{\xMIN - 1}) -- (\x,{\xMAX + 1});
+				\draw [xshift = -5pt] (\x,{\xMIN - 1}) -- (\x,{\xMAX + 1});
+			}
+
+			\foreach \y in {\yMIN,...,\yMAX}
+			{
+				\draw [yshift = 5pt] ({\yMIN - 1},\y) -- ({\yMAX + 1},\y);
+				\draw [yshift = -5pt] ({\yMIN - 1},\y) -- ({\yMAX + 1},\y);
+			}
+		\end{scope}
+
+		\begin{scope}
+			\foreach \x in {\xMIN,...,\xMAX}
+			{
+				\foreach \y in {\yMIN,...,\yMAX}
+				{
+					\filldraw [white] ($ (\x,\y) + (-10pt,-10pt) $) rectangle ($ (\x,\y) + (10pt,10pt) $);
+					\draw (\x,\y) circle (10pt) node {Si};
+				}
+			}
+		\end{scope}
+	\end{tikzpicture}
+	\caption{2D model of bonding in silicon}
+\end{figure}
+
+In a silicon crystal, the silicon atoms are packed tightly and periodically, i.e. in a repeating pattern.
+The atomic density for silicon is approximately $10^{23}$ atoms per \si{\cubic\centi\metre}.\\
+This arrangement of silicon atoms in crystalline form acts as a conductor only at certain temperatures.
+At low temperatures, i.e. around 0 \kelvin, the electrons are tightly bound, and hence the crystal behaves as an insulator.
+However, at higher temperatures, the additional thermal energy may be sufficient to break bonds, and hence produce free electrons.\\
+This property of silicon and other semiconductors makes it possible to control their conductivity.
+
+\section{Basics of Crystal Structure}
+
+\begin{definition}[Crystal lattice]
+	The periodic arrangement of atoms in a crystal is called crystal lattice.
+\end{definition}
+
+\begin{definition}[Lattice constant]
+	The distance between two adjacent atoms in a crystal lattice is called the lattice constant.\\
+	It is denoted by $a$.\\
+	It is determined by the attractive and repulsive forces acting on the atoms.
+	The lattice constant corresponds to the lowest energy in the crystal.
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}
+			\def\xMIN{0};
+			\def\xMAX{3};
+			\def\yMIN{0};
+			\def\yMAX{3};
+
+			\foreach \x in {\xMIN,...,\xMAX}
+			{
+				\foreach \y in {\yMIN,...,\yMAX}
+				{
+					\draw (\x,\y) circle (3pt);
+				}
+			}
+
+			\draw [stealth-stealth, yshift = 5pt] (\xMIN,\yMIN) -- ++(1,0) node [midway, above] {$a$};
+		\end{tikzpicture}
+		\caption{Crystal lattice and lattice constant}
+	\end{figure}
+\end{definition}
+
+\begin{definition}[Unit cell]
+	A volume which is repeated throughout the crystal is called the unit cell.
+	It is used to represent the entire crystal lattice.
+	\begin{asy}
+		import three;
+		settings.render=8;
+		settings.prc=false;
+		size(10cm);
+		
+		currentprojection=orthographic(
+		camera=(4.5,2.4,1),
+		up=(-0.00139501368508954,-0.000275076822729568,0.00702970309857882),
+		target=(4.44089209850063e-16,4.44089209850063e-16,4.44089209850063e-16),
+		zoom=0.50016345138754);
+		
+		material spherecolor = material(diffusepen=black, ambientpen=gray(0.1), specularpen=white);
+		material cylcolor = material(diffusepen=black, ambientpen=black);
+		
+		real cylRadius = 0.005;
+		real sphereRadius = 0.2;
+		
+		void drawRod(triple a, triple b) {
+		  surface rod = extrude(scale(cylRadius)*unitcircle, axis=length(b-a)*Z);
+		  triple orthovector = cross(Z, b-a);
+		  if (length(orthovector) > .01) {
+		    real angle = aCos(dot(Z, b-a) / length(b-a));
+		    rod = rotate(angle, orthovector) * rod;
+		  }
+		  draw(shift(a)*rod, surfacepen=cylcolor);
+		}
+		
+		void drawSphere(triple center) {
+		     draw(shift(center)*scale3(sphereRadius)*unitsphere, surfacepen=spherecolor);
+		}
+		
+		triple a = (0,0,0);
+		triple b = (0,0,1);
+		triple c = (0,1,0);
+		triple d = (0,1,1);
+		triple e = (1,0,0);
+		triple f = (1,0,1);
+		triple g = (1,1,0);
+		triple h = (1,1,1);
+		
+		drawSphere(a);
+		drawSphere(b);
+		drawSphere(c);
+		drawSphere(d);
+		drawSphere(e);
+		drawSphere(f);
+		drawSphere(g);
+		drawSphere(h);
+		
+		drawRod(a,b);
+		drawRod(c,d);
+		drawRod(e,f);
+		drawRod(g,h);
+
+		drawRod(a,c);
+		drawRod(b,d);
+		drawRod(e,g);
+		drawRod(f,h);
+
+		drawRod(a,e);
+		drawRod(b,f);
+		drawRod(c,g);
+		drawRod(d,h);
+	\end{asy}
+\end{definition}
+
+\begin{definition}
+	The atomic packing factor defined to be
+	\begin{align*}
+		\text{APF} &= \frac{\text{volume filled by atoms}}{\text{total volume of unit cell}}
+	\end{align*}
+\end{definition}
+
+\subsection{Simple Cubic Lattice}
+
+\begin{figure}[h]
+	\centering
+	\begin{asy}
+		import three;
+		settings.render=8;
+		settings.prc=false;
+		size(10cm);
+		
+		currentprojection=orthographic(
+		camera=(4.5,2.4,1),
+		up=(-0.00139501368508954,-0.000275076822729568,0.00702970309857882),
+		target=(4.44089209850063e-16,4.44089209850063e-16,4.44089209850063e-16),
+		zoom=0.50016345138754);
+		
+		material spherecolor = material(diffusepen=black, ambientpen=gray(0.1), specularpen=white);
+		material cylcolor = material(diffusepen=black, ambientpen=black);
+		
+		real cylRadius = 0.005;
+		real sphereRadius = 0.2;
+		
+		void drawRod(triple a, triple b) {
+		  surface rod = extrude(scale(cylRadius)*unitcircle, axis=length(b-a)*Z);
+		  triple orthovector = cross(Z, b-a);
+		  if (length(orthovector) > .01) {
+		    real angle = aCos(dot(Z, b-a) / length(b-a));
+		    rod = rotate(angle, orthovector) * rod;
+		  }
+		  draw(shift(a)*rod, surfacepen=cylcolor);
+		}
+		
+		void drawSphere(triple center) {
+		     draw(shift(center)*scale3(sphereRadius)*unitsphere, surfacepen=spherecolor);
+		}
+		
+		triple a = (0,0,0);
+		triple b = (0,0,1);
+		triple c = (0,1,0);
+		triple d = (0,1,1);
+		triple e = (1,0,0);
+		triple f = (1,0,1);
+		triple g = (1,1,0);
+		triple h = (1,1,1);
+		
+		drawSphere(a);
+		drawSphere(b);
+		drawSphere(c);
+		drawSphere(d);
+		drawSphere(e);
+		drawSphere(f);
+		drawSphere(g);
+		drawSphere(h);
+		
+		drawRod(a,b);
+		drawRod(c,d);
+		drawRod(e,f);
+		drawRod(g,h);
+
+		drawRod(a,c);
+		drawRod(b,d);
+		drawRod(e,g);
+		drawRod(f,h);
+
+		drawRod(a,e);
+		drawRod(b,f);
+		drawRod(c,g);
+		drawRod(d,h);
+	\end{asy}
+	\caption{Simple cubic lattice (SC)}
+\end{figure}
+
+The number of atoms per unit cell are
+\begin{align*}
+	\text{atoms per unit cell} &= \underbrace{\frac{1}{8}}_{\text{atoms per corner}} \times \underbrace{8}_{\text{number of corners}}\\
+	&= 1
+\end{align*}
+The atomic packing factor is
+\begin{align*}
+	\text{APF} &= \frac{\overbrace{\frac{4}{3} \pi r^3}^{\text{volume of 1 atom}} \times \overbrace{1}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}
+	&= \frac{\overbrace{\frac{4}{3} \pi \left( \frac{a}{2} \right)^3}^{\text{volume of 1 atom}} \times \overbrace{1}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}\\
+	&= \frac{\pi}{6}
+\end{align*}
+
+\subsection{Face Centred Cubic Lattice}
+
+\begin{figure}[h]
+	\centering
+	\begin{asy}
+		import three;
+		settings.render=8;
+		settings.prc=false;
+		size(10cm);
+		
+		currentprojection=orthographic(
+		camera=(4.5,2.4,1),
+		up=(-0.00139501368508954,-0.000275076822729568,0.00702970309857882),
+		target=(4.44089209850063e-16,4.44089209850063e-16,4.44089209850063e-16),
+		zoom=0.50016345138754);
+		
+		material spherecolor = material(diffusepen=black, ambientpen=gray(0.1), specularpen=white);
+		material cylcolor = material(diffusepen=black, ambientpen=black);
+		
+		real cylRadius = 0.005;
+		real sphereRadius = 0.2;
+		
+		void drawRod(triple a, triple b) {
+		  surface rod = extrude(scale(cylRadius)*unitcircle, axis=length(b-a)*Z);
+		  triple orthovector = cross(Z, b-a);
+		  if (length(orthovector) > .01) {
+		    real angle = aCos(dot(Z, b-a) / length(b-a));
+		    rod = rotate(angle, orthovector) * rod;
+		  }
+		  draw(shift(a)*rod, surfacepen=cylcolor);
+		}
+		
+		void drawSphere(triple center) {
+		     draw(shift(center)*scale3(sphereRadius)*unitsphere, surfacepen=spherecolor);
+		}
+		
+		triple a = (0,0,0);
+		triple b = (0,0,1);
+		triple c = (0,1,0);
+		triple d = (0,1,1);
+		triple e = (1,0,0);
+		triple f = (1,0,1);
+		triple g = (1,1,0);
+		triple h = (1,1,1);
+		
+		triple i = (0.5,0.5,0);
+		triple j = (0.5,0,0.5);
+		triple k = (0,0.5,0.5);
+		triple l = (0.5,0.5,1);
+		triple m = (0.5,1,0.5);
+		triple n = (1,0.5,0.5);
+
+		drawSphere(a);
+		drawSphere(b);
+		drawSphere(c);
+		drawSphere(d);
+		drawSphere(e);
+		drawSphere(f);
+		drawSphere(g);
+		drawSphere(h);
+
+		drawSphere(i);
+		drawSphere(j);
+		drawSphere(k);
+		drawSphere(l);
+		drawSphere(m);
+		drawSphere(n);
+		
+		drawRod(a,b);
+		drawRod(c,d);
+		drawRod(e,f);
+		drawRod(g,h);
+
+		drawRod(a,c);
+		drawRod(b,d);
+		drawRod(e,g);
+		drawRod(f,h);
+
+		drawRod(a,e);
+		drawRod(b,f);
+		drawRod(c,g);
+		drawRod(d,h);
+	\end{asy}
+	\caption{Face centred cubic lattice (FCC)}
+\end{figure}
+
+The number of atoms per unit cell are
+\begin{align*}
+	\text{atoms per unit cell} &= \underbrace{\frac{1}{8}}_{\text{atoms per corner}} \times \underbrace{8}_{\text{number of corners}} + \underbrace{\frac{1}{2}}_{\text{atoms per face}} \times \underbrace{6}_{\text{number of faces}}\\
+	&= 4
+\end{align*}
+The atomic packing factor is
+\begin{align*}
+	\text{APF} &= \frac{\overbrace{\frac{4}{3} \pi r^3}^{\text{volume of 1 atom}} \times \overbrace{1}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}
+	&= \frac{\overbrace{\frac{4}{3} \pi \left( \frac{a}{2 \sqrt{2}} \right)^3}^{\text{volume of 1 atom}} \times \overbrace{4}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}\\
+	&= \frac{\pi}{3 \sqrt{2}}
+\end{align*}
+
+\subsection{Body Centred Cubic Lattice}
+
+\begin{figure}[h]
+	\centering
+	\begin{asy}
+		import three;
+		settings.render=8;
+		settings.prc=false;
+		size(10cm);
+		
+		currentprojection=orthographic(
+		camera=(4.5,2.4,1),
+		up=(-0.00139501368508954,-0.000275076822729568,0.00702970309857882),
+		target=(4.44089209850063e-16,4.44089209850063e-16,4.44089209850063e-16),
+		zoom=0.50016345138754);
+		
+		material spherecolor = material(diffusepen=black, ambientpen=gray(0.1), specularpen=white);
+		material cylcolor = material(diffusepen=black, ambientpen=black);
+		
+		real cylRadius = 0.005;
+		real sphereRadius = 0.2;
+		
+		void drawRod(triple a, triple b) {
+		  surface rod = extrude(scale(cylRadius)*unitcircle, axis=length(b-a)*Z);
+		  triple orthovector = cross(Z, b-a);
+		  if (length(orthovector) > .01) {
+		    real angle = aCos(dot(Z, b-a) / length(b-a));
+		    rod = rotate(angle, orthovector) * rod;
+		  }
+		  draw(shift(a)*rod, surfacepen=cylcolor);
+		}
+		
+		void drawSphere(triple center) {
+		     draw(shift(center)*scale3(sphereRadius)*unitsphere, surfacepen=spherecolor);
+		}
+		
+		triple a = (0,0,0);
+		triple b = (0,0,1);
+		triple c = (0,1,0);
+		triple d = (0,1,1);
+		triple e = (1,0,0);
+		triple f = (1,0,1);
+		triple g = (1,1,0);
+		triple h = (1,1,1);
+
+		triple i = (0.5,0.5,0.5);
+		
+		drawSphere(a);
+		drawSphere(b);
+		drawSphere(c);
+		drawSphere(d);
+		drawSphere(e);
+		drawSphere(f);
+		drawSphere(g);
+		drawSphere(h);
+
+		drawSphere(i);
+		
+		drawRod(a,b);
+		drawRod(c,d);
+		drawRod(e,f);
+		drawRod(g,h);
+
+		drawRod(a,c);
+		drawRod(b,d);
+		drawRod(e,g);
+		drawRod(f,h);
+
+		drawRod(a,e);
+		drawRod(b,f);
+		drawRod(c,g);
+		drawRod(d,h);
+	\end{asy}
+	\caption{Body centred cubic lattice (BCC)}
+\end{figure}
+
+The number of atoms per unit cell are
+\begin{align*}
+	\text{atoms per unit cell} &= \underbrace{\frac{1}{8}}_{\text{atoms per corner}} \times \underbrace{8}_{\text{number of corners}} + \underbrace{1}_{\text{atom at centre}}\\
+	&= 2
+\end{align*}
+%The atomic packing factor is
+%\begin{align*}
+%	\text{APF} &= \frac{\overbrace{\frac{4}{3} \pi r^3}^{\text{volume of 1 atom}} \times \overbrace{1}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}
+%	&= \frac{\overbrace{\frac{4}{3} \pi \left( \frac{a}{2} \right)^3}^{\text{volume of 1 atom}} \times \overbrace{1}^{\text{number of atoms}}}{\underbrace{a^3}_{\text{volume of unit cell}}}\\
+%	&= \frac{\pi}{6}
+%\end{align*}
+
+\section{Basics of Crystal Growth}
+
+\begin{definition}
+	Epitaxy is the growth of layers, called epitaxial layers, on top of a thicker substrate layer.\\
+	Homoepitaxy is growing an epitaxial layer of the same material as the substrate.
+	Heteroepitaxy is growing an epitaxial layer of a material different from the substrate.
+	\begin{figure}[H]
+		\begin{tikzpicture}
+			\def\h{2};
+			\def\l{6};
+	
+			\begin{scope}
+				\draw (0,0) rectangle ++(\l,\h);
+	
+				\node at (\l/2,\h/2) {substrate (wafer)};
+			\end{scope}
+	
+			\begin{scope}[yshift = \h cm]
+				\draw (0,0) rectangle ++(\l,0.5*\h);
+	
+				\node at (\l/2,\h/4) {Layer 1};
+			\end{scope}
+	
+			\begin{scope}[yshift = 1.5*\h cm]
+				\draw (0,0) rectangle ++(\l,0.5*\h);
+	
+				\node at (\l/2,\h/4) {Layer 2};
+			\end{scope}
+	
+			\begin{scope}
+				\draw [decorate, decoration = brace, xshift = -10pt] (0,\h) -- (0,2*\h) node [midway, left] {epitaxial layers};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{Epitaxial layers}
+	\end{figure}
+\end{definition}
+
+Due to different properties of the materials which make up the substrate and epitaxial layers, there are certain constraints on the possible combinations.\\
+These factors include
+\begin{enumerate}
+	\item lattice constants
+	\item crystal structure
+\end{enumerate}
+
+\subsection{Lattice Matching}
+
+If there is a difference between the lattice constants of the materials of two adjacent layers, there is a stress or strain generated, due to the interaction of the different lattices.\\
+To minimize this stress, a technique called lattice matching is used.\\
+~\\
+Suppose the lattice constants of AlAs, InAs, and GaAs are as shown in the graph.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale = 1.5]
+		\def\xMIN{0};
+		\def\xMAX{5};
+		\def\yMIN{0};
+		\def\yMAX{5};
+
+		\coordinate (GaAs) at (2,1.5);
+		\coordinate (AlAs) at (1,3);
+		\coordinate (InAs) at (4,1);
+
+		\begin{scope}[gray, -stealth]
+			\draw (\xMIN,0) -- (\xMAX,0) node [right] {lattice constant \angstrom};
+			\draw (0,\yMIN) -- (0,\yMAX) node [above] {$E_{\textnormal{gap}}$};
+		\end{scope}
+
+		\begin{scope}
+			\filldraw (GaAs) circle (2pt) node [below left] {GaAs};
+			\filldraw (AlAs) circle (2pt) node [above left] {AlAs};
+			\filldraw (InAs) circle (2pt) node [right] {InAs};
+		\end{scope}
+
+		\begin{scope}
+			\draw (AlAs) -- (InAs) node [midway, above right] {In$_x$Al$_{1 - x}$As};
+			\draw (InAs) -- (GaAs) node [midway, below] {In$_x$Ga$_{1 - x}$As};
+			\draw (GaAs) -- (AlAs) node [midway, left] {Al$_x$Ga$_{1 - x}$As};
+		\end{scope}
+
+		\begin{scope}[dashed]
+			\draw (GaAs) -- ++(90:2);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Lattice matching}
+\end{figure}
+If the substrate used is GaAs, and the epitaxial layer is made of InAlAs, then the composition of the epitaxial layer of InAlAs can be determined graphically.\\
+The straight line connecting the points representing AlAs and InAs represents all possible values of In$_x$Al$_{1 - x}$As, with $x$ varying from $0$ to $1$, with $0$ corresponding to AlAs, and $1$ corresponding to InAs.\\
+Therefore, the ideal material for the epitaxial layer, is the composition of In$_x$Al$_{1 - x}$As with lattice constant equal to that of GaAs.
+
+\section{Thermal Motion}
+
+\begin{definition}
+	The energy needed to break a bond and free an electron is called the binding energy, or the ionization energy.
+\end{definition}
 
 \end{document}
