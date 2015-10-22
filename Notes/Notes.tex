@@ -1,6 +1,7 @@
 \documentclass[fleqn, a4paper, 12pt, twoside]{article}
 \usepackage{exsheets} %question and solution environments
 \usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage[utf8]{inputenc}
 \usepackage{esint} %integral signs
 \usepackage{marginnote} %marginnotes
 \usepackage{gensymb} %miscellaneous symbols
@@ -533,6 +534,176 @@ Therefore,
 	h f_{\textnormal{cutoff}} & = W
 \end{align*}
 Also, as each photon provides all its energy to a single electron, increasing the intensity of light just increases the number of electrons emitted, but does not increase the kinetic energy of the emitted electrons.
+
+\section{Quantum Particles}
+
+\begin{definition}[Momentum of a quantum particle]
+	The momentum of a quantum particle is defined as
+	\begin{align*}
+		p & = \frac{E}{c}
+	\end{align*}
+	where $E$ is the energy of the particle.
+\end{definition}
+
+\begin{theorem}[Einstein Equation]
+	\begin{align*}
+		E & = m c^2 + p c
+	\end{align*}
+	\label{Einstein_Equation}
+\end{theorem}
+
+\begin{definition}
+	The reduced Planck's constant is defined as
+	\begin{align*}
+		\hbar & = \frac{h}{2 \pi}
+	\end{align*}
+	where $h$ is Planck's constant.
+\end{definition}
+
+\begin{theorem}
+	\begin{align*}
+		E & = \hbar \omega \\
+		p & = \hbar k
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		E & = h f                    \\
+                  & = h \frac{\omega}{2 \pi} \\
+                  & = \hbar \omega
+	\end{align*}
+	\begin{align*}
+		p & = \frac{E}{c}       \\
+                  & = \frac{h}{\lambda} \\
+                  & = \frac{h}{2 \pi} k \\
+                  & = \hbar k
+	\end{align*}
+\end{proof}
+
+\subsection{de Broglie Wavelength}
+
+According to de Broglie's theory, particles have waves associated with them.\\
+Therefore, according to this theory,
+\begin{align*}
+	\lambda & = \frac{h}{p}   \\
+                & = \frac{h}{m v} \\
+	f       & = \frac{E}{h}
+\end{align*}
+where $m$ is the mass of the particle and $v$ is its velocity.\\
+Therefore, according to this theory, particles must exhibit wave-like behaviour.
+Hence, if the double slit experiment is performed with particles, the pattern observed must be similar to the fringe pattern observed with waves.\\
+If the double slit experiment is performed with a single electron emitted at a time, over a long period of time, a fringe-like pattern, made up of dots corresponding to single electrons, is observed.
+This is consistent with de Broglie's theory.
+
+\begin{question}
+	Find the de Broglie wavelength of an electron moving at $10^7 \si{\metre\per\second}$.
+\end{question}
+
+\begin{solution}
+	\begin{align*}
+		\lambda & = \frac{h}{m v}                                                                                                                                 \\
+                        & = \frac{6.63 \times 10^{-34} \si{\joule\second}}{\left( 9.11 \times 10^{-31} \si{\kilogram} \right) \left( 10^7 \si{\metre\per\second} \right)} \\
+                        & = 7.27 \times 10^{-11} \si{\metre}                                                                                                              \\
+                        & = 72 \si{\pico\metre}
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Find the de Broglie wavelength of a rock of 50 \gram, thrown with a speed of 40 \si{\metre\per\second}.
+\end{question}
+
+\begin{solution}
+	\begin{align*}
+		\lambda & = \frac{h}{m v}                                                                   \\
+                        & = \frac{6.63 \times 10^{-34}}{\left( 50 \times 10^{-3} \right) \left( 40 \right)} \\
+                        & = 3.3 \times 10^{-34} \metre
+	\end{align*}
+\end{solution}<++>
+
+\subsection{Impact of Observation on the Result of Experiments}
+
+If 100\% of the electrons are observed to determine which slit they pass through, the pattern observed is exactly like the pattern observed with classical particles.\\
+If only some electrons are observed, say 70\%, then those 70\% electrons behave like classical particles, and the rest behave like a wave.
+Therefore, the effective result is a superposition both of these pattern.\\
+~\\
+Therefore, the outcome of the experiment is affected by the fact that the particles are being observed.\\
+The reason behind this is that the act of observation involves interacting with the particles, usually in the form of the particle being hit by photons, which are necessary for the observer to make the observations.\\
+Classical particles are not affected by this factor on such a large scale, as their mass is much larger than that of quantum particles.
+
+\section{Schrödinger Equation}
+
+\begin{theorem}[Schrödinger Equation]
+	\begin{align*}
+		i \hbar \dpd{\psi(x,t)}{t} & = \left( -\frac{\hbar^2}{2 m} \dpd[2]{\psi(x,t)}{x} + V(x) \right) \psi(x,t)
+	\end{align*}
+	\label{Schrodinger_Equation}
+\end{theorem}
+
+\begin{proof}
+	Let the wave be given by
+	\begin{align*}
+		\psi(x,t) & = A e^{i (k x - \omega t)}
+	\end{align*}
+	Differentiating with respect to time,
+	\begin{align*}
+		\dpd{\psi(x,t)}{t}  & = -i \omega \psi(x,t) \\
+                                    & = -i \frac{E}{\hbar} \psi(x,t)
+		\marginnote
+		{
+			$\because \omega = \frac{E}{\hbar}$
+		}                  \\
+                                    & = -\frac{i}{\hbar} \left( \frac{p^2}{2 m} + E_P \right) \psi(x,t)
+		\marginnote
+		{
+			where $E_P = V(x)$ is the potential energy of the particle
+		}                  \\
+                                    & = -\frac{i}{\hbar} \left( \frac{p^2}{2 m} + V(x) \right) \psi(x,t)
+			\numberthis
+	\end{align*}
+	Differentiating with respect to $x$,
+	\begin{align*}
+		\dpd{\psi(x,t)}{x}                                & = i k \psi(x,t)                  \\
+		\therefore \dpd[2]{\psi(x,t)}{x}                  & = (i k) (i k) \psi(x,t)          \\
+                                                                  & = -k^2 \psi(x,t)                 \\
+                                                                  & = -\frac{p^2}{\hbar^2} \psi(x,t) \\
+		\therefore -h^2 \dpd[2]{\psi(x,t)}{x}             & = p^2 \psi(x,t)                  \\
+		\therefore -\frac{h^2}{2 m} \dpd[2]{\psi(x,t)}{x} & = \frac{p^2}{2 m} \psi(x,t)
+			\numberthis
+	\end{align*}
+	Therefore, solving the above equations simultaneously,
+	\begin{align*}
+		\dpd{\psi(x,t)}{t}                    & = -\frac{i}{\hbar} \left( -\frac{\hbar^2}{2 m} \dpd[2]{\psi(x,t)}{x} + V(x) \right) \psi(x,t) \\
+		\therefore i \hbar \dpd{\psi(x,t)}{t} & = \left( -\frac{\hbar^2}{2 m} \dpd[2]{\psi(x,t)}{x} + V(x) \right) \psi(x,t)
+	\end{align*}
+\end{proof}
+
+\section{Basic Postulates of Quantum Mechanics}
+
+\begin{enumerate}
+	\item
+		$\psi(x,t)$ describes the configuration of the system.
+	\item
+		The probability of finding the particle between $x$ and $x + \dif x$ at time $t$ is
+		\begin{align*}
+			\left| \psi(x,t) \right|^2 & = \psi(x,t) \psi^*(x,t)
+		\end{align*}
+		where $\psi^*$ is the complex conjugate of of $\psi$,
+	\item
+		If $\psi_1(x,t)$ and $\psi_2(x,t)$ are solutions to the Schrödinger equation, then $\alpha \psi(x,t) + \beta \psi(x,t)$ is also a solution to the Schrödinger equation.
+\end{enumerate}
+
+\section{Properties of $\psi(x,t)$}
+
+\begin{enumerate}
+	\item
+		$\displaystyle \int\limits_{-\infty}^{\infty} \left| \psi(x,t) \right|^2 \dif x = 1$\\
+		$\left| \psi(x,t) \right|^2$ is the probability of the particle being in the neighbourhood of $x$.
+		Therefore, the equation is obvious, as the probability of the particle being in the entire universe must be 1.
+	\item
+		$\left| \psi(x,t) \right|$ is a single valued function.\\
+		This is obvious, as the probability of the particle existing at a point in space must have exactly one value.
+\end{enumerate}
 
 \newpage
 \part{Solid State Physics}
