@@ -1,0 +1,448 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+%\usepackage[top = 2cm, bottom = 1cm, left = 1cm, right = 1cm]{geometry}
+\usepackage{exsheets, tasks}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{ulem} %underline for \emph{}
+\usepackage{xfrac} %inline fractions
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+\usepackage[utf8]{inputenc}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\newcommand{\AxisRotator}[1][rotate=0]{
+	\tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+} %rotation symbols on axes
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\curl}{\mathrm{curl\,}}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\thesubsection}{(\arabic{subsection})}
+\renewcommand{\thesection}{(\arabic{section})}
+
+\renewcommand{\emph}{\uline}
+
+%section headings on left
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+	\z@{\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\centering}}% DELETED
+	{\normalfont}}% NEW
+\def\section{\@startsection{section}{1}%
+	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\scshape\centering}}% DELETED
+	{\normalfont\scshape}}% NEW
+\makeatother
+
+%forces newline after subsection
+\makeatletter
+\def\subsection{\@startsection{subsection}{3}%
+	\z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+	{\normalfont\itshape}}
+\makeatother
+
+\settasks{counter-format = tsk[1].}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title{Quantum and Solid State Physics : Assignment 2}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{5}{11}{2015}}
+
+\begin{document}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	If we require a silicon sample to have an electron concentration 4 times higher than its hole concentration, i.e. $n = 4 p$, which of the following dopant concentration would you choose, expressed in terms of intrinsic carrier concentration $n_i$?
+	\begin{enumerate}
+		\item $N_D = 0.5 n_i$
+		\item $N_D = 2 n_i$ \label{correct_answer_1}
+		\item $N_D = 1.5 n_i$
+		\item $N_A = 0.5 n_i$
+		\item $N_A = 2 n_i$
+		\item $N_A = 1.5 n_i$
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	As the requirement is to have an electron concentration higher than the original sample, the dopant must be a donor.\\
+	For the original sample,
+	\begin{align*}
+		n p &= {n_i}^2\\
+	\end{align*}
+	Therefore, for the doped sample,
+	\begin{align*}
+		4 p n &= {N_D}^2\\
+		\therefore 4 {n_i}^2 &= {N_D}^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		N_D &= 2 n_i
+	\end{align*}
+	Hence, the dopant concentration should be \emph{(\ref{correct_answer_1}) $N_D = 2 n_i$}.
+\end{solution}
+
+\begin{question}
+	Let's examine 3 wafers, all of which are doped with a concentration of $10^{15}$ dopants \si{\per\cubic\centi\metre}.
+	\begin{enumerate}
+		\item Wafer A: Silicon, in which the dopant energy level is 1.095 \electronvolt above the valence energy level $E_V$.
+		\item Wafer B: Silicon, in which the dopant energy level is 1.08 \electronvolt above the valence energy level $E_V$.
+		\item Wafer C: GaAs, in which the dopant energy level is 1.095 \electronvolt above the valence energy level $E_V$.
+	\end{enumerate}
+	\begin{enumerate}
+		\item
+			Do we expect the dopants in wafers A, B, and C to be donors or acceptors?
+			Draw the energy diagrams for each wafer, and clearly label all relevant energy levels and spacing between them.
+		\item
+			As the temperature is increased, which wafer will be the first to transition from the ionization region to the extrinsic region?
+		\item
+			For which wafer will intrinsic carriers start to dominate at the lowest temperature?
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			As the dopant energy in the wafers is closer to $E_C$, than $E_V$, the dopants will be \emph{donors}.
+			\begin{figure}[H]
+				\centering
+				\begin{tikzpicture}
+					\def\l{4};
+					\def\eValence{1};
+					\def\eConduction{4};
+					\def\eDonor{3.5};
+			
+					\newcommand{\drawEnergyLevel}[1]
+					{
+						\draw (0,#1) -- (\l,#1)
+					}
+			
+					\newcommand{\drawEnergyGap}[4]
+					{
+						\draw [|<->|] (#3,#1) -- (#3,#2) node [midway, left] {#4}
+					}
+			
+					\begin{scope}
+						\drawEnergyLevel{\eValence} node [right] {$E_V$};
+						\drawEnergyLevel{\eConduction} node [above right] {$E_C$};
+						\drawEnergyLevel{\eDonor} node [below right] {$E_D$};
+					\end{scope}
+			
+					\begin{scope}
+						\drawEnergyGap{\eValence}{\eConduction}{-3}{$E_{\textnormal{gap}} = 1.1 \electronvolt$};
+						\drawEnergyGap{\eValence}{\eDonor}{-1}{$1.095 \electronvolt$};
+					\end{scope}
+				\end{tikzpicture}
+				\caption{Energy Diagram: Wafer A}
+			\end{figure}
+
+			\begin{figure}[H]
+				\centering
+				\begin{tikzpicture}
+					\def\l{4};
+					\def\eValence{1};
+					\def\eConduction{4};
+					\def\eDonor{3.5};
+			
+					\newcommand{\drawEnergyLevel}[1]
+					{
+						\draw (0,#1) -- (\l,#1)
+					}
+			
+					\newcommand{\drawEnergyGap}[4]
+					{
+						\draw [|<->|] (#3,#1) -- (#3,#2) node [midway, left] {#4}
+					}
+			
+					\begin{scope}
+						\drawEnergyLevel{\eValence} node [right] {$E_V$};
+						\drawEnergyLevel{\eConduction} node [above right] {$E_C$};
+						\drawEnergyLevel{\eDonor} node [below right] {$E_D$};
+					\end{scope}
+			
+					\begin{scope}
+						\drawEnergyGap{\eValence}{\eConduction}{-3}{$E_{\textnormal{gap}} = 1.1 \electronvolt$};
+						\drawEnergyGap{\eValence}{\eDonor}{-1}{$1.08 \electronvolt$};
+					\end{scope}
+				\end{tikzpicture}
+				\caption{Energy Diagram: Wafer B}
+			\end{figure}
+
+			\begin{figure}[H]
+				\centering
+				\begin{tikzpicture}
+					\def\l{4};
+					\def\eValence{1};
+					\def\eConduction{4};
+					\def\eDonor{3.5};
+			
+					\newcommand{\drawEnergyLevel}[1]
+					{
+						\draw (0,#1) -- (\l,#1)
+					}
+			
+					\newcommand{\drawEnergyGap}[4]
+					{
+						\draw [|<->|] (#3,#1) -- (#3,#2) node [midway, left] {#4}
+					}
+			
+					\begin{scope}
+						\drawEnergyLevel{\eValence} node [right] {$E_V$};
+						\drawEnergyLevel{\eConduction} node [above right] {$E_C$};
+						\drawEnergyLevel{\eDonor} node [below right] {$E_D$};
+					\end{scope}
+			
+					\begin{scope}
+						\drawEnergyGap{\eValence}{\eConduction}{-3}{$E_{\textnormal{gap}} = 1.43 \electronvolt$};
+						\drawEnergyGap{\eValence}{\eDonor}{-1}{$1.095 \electronvolt$};
+					\end{scope}
+				\end{tikzpicture}
+				\caption{Energy Diagram: Wafer C}
+			\end{figure}
+		\item
+			When the temperature is increased, the wafer for which the gap between $E_D$ and $E_C$ is the least will be the first to transition into the extrinsic region.
+			Therefore, \emph{wafer A} will be the first to transition.
+		\item
+			The energy band gap of Si is less than that of GaAs.
+			However, in wafer B, the dopant charge carriers are at a lower energy level than that of those in wafer A.
+			Hence, the intrinsic carriers in \emph{wafer B} will start to dominate at the lowest temperature.
+	\end{enumerate}
+\end{solution}
+
+\begin{question}
+	Two wafers of silicon are doped with the following concentration
+	\begin{align*}
+		{N_D}_1 &= 10^{15} \si{\per\cubic\centi\metre}\\
+		{N_D}_2 &= 10^{16} \si{\per\cubic\centi\metre}
+	\end{align*}
+	Is it possible that the electron concentration $n$ in both wafers is identical, i.e. $n_1 = n_2$?
+	\begin{enumerate}
+		\item No
+		\item Yes, in the extrinsic region
+		\item Yes, in the intrinsic region
+		\item Yes, in both the extrinsic and intrinsic regions
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{align*}
+		n &= N_D + \text{number of thermally generated EHPs}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		n_1 &= {N_D}_1 + \text{number of thermally generated EHPs}\\
+		n_2 &= {N_D}_2 + \text{number of thermally generated EHPs}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		n_1 &\neq n_2
+	\end{align*}
+	Therefore, it is \emph{not possible} for the electron concentration in both wafers to be identical.
+\end{solution}
+
+\begin{question}
+	A particle is represented, at time $t = 0$, by the following wave function.
+	\begin{align*}
+		\psi(x,0) &=
+			\begin{cases}
+				A \frac{x}{a} &;\quad 0 \le x \le a\\
+				A \frac{b - x}{b - a} &;\quad a \le x \le b\\
+				0 &;\quad \text{otherwise}\\
+			\end{cases}
+	\end{align*}
+	\begin{enumerate}
+		\item Determine the normalization constant $A$.
+		\item Sketch $\psi(x,0)$ as a function of $x$.
+		\item Where is the particle most likely to be found at $t = 0$?
+		\item What is the probability of finding the particle to the left of $a$?
+		\item What is the expectation value of $x$, at time $t = 0$?
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			\begin{align*}
+				1 & = \int\limits_{-\infty}^{\infty} \left| \psi(x,0) \right|^2 \dif x                                                        \\
+                                  & = \int\limits_{0}^{a} A^2 \frac{x^2}{a^2} \dif x + \int\limits_{a}^{b} A^2 \frac{(b - x)^2}{(b - a)^2} \dif x                             \\
+				  &= \frac{A^2}{a^2} \left. \frac{x^3}{3} \right|_{0}^{a} + \frac{A^2}{(b - a)^2} \left. b^2 x - b x^2 + \frac{x^3}{3} \right|_{a}^{b}\\
+				  &= \frac{A^2}{a^2} \frac{a^3}{3} + \frac{A^2}{(b - a)^2} \left( b^3 - b^3 + \frac{b^3}{3} - a b^2 + a^2 b - \frac{a^3}{3} \right)\\
+				  &= \frac{A^2 a}{3} + \frac{A^2}{(b - a)^2} \left( \frac{b^3}{3} - a b^2 + a^2 b - \frac{a^3}{3} \right)\\
+				  &= A^2 \left( \frac{a}{3} + \frac{b^3}{3 (b - a)^2} - \frac{a b^2}{(b - a)^2} + \frac{a^2 b}{(b - a)^2} - \frac{a^3}{3 (b - a)^2} \right)\\
+				  &= A^2 \left( \frac{a (b - a)^2 + b^3 - 3 a b^2 + 3 a^2 b - a^3}{3 (b - a)^2} \right)\\
+				  &= A^2 \left( \frac{b (b - a)^2}{3 (b - a)^2} \right)\\
+				  &= \frac{A^2 b}{3}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				A &= \sqrt{\frac{3}{b}}
+			\end{align*}
+		\item
+			\begin{align*}
+				A &= \sqrt{\frac{3}{b}}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\psi(x,0) &=
+					\begin{cases}
+						\sqrt{\frac{3}{b}} \frac{x}{a} &;\quad 0 \le x \le a\\
+						\sqrt{\frac{3}{b}} \frac{b - x}{b - a} &;\quad a \le x \le b\\
+						0 &;\quad \text{otherwise}\\
+					\end{cases}
+			\end{align*}
+			Therefore,
+			\begin{figure}[H]
+				\centering
+				\begin{tikzpicture}
+					\def\xMIN{0};
+					\def\xMAX{5};
+					\def\yMIN{0};
+					\def\yMAX{3};
+					
+					\def\a{2};
+					\def\b{3};
+					\def\A{1};
+
+					\begin{scope}[-stealth]
+						\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+						\draw (0,\yMIN) -- (0,\yMAX) node [above] {$\psi(x,0)$};
+					\end{scope}
+
+					\begin{scope}
+						\filldraw (\a,0) circle (1pt) node [below] {$a$};
+						\filldraw (\b,0) circle (1pt) node [below] {$b$};
+						\filldraw (0,\A) circle (1pt) node [left] {$A$};
+					\end{scope}
+
+					\begin{scope}
+						\draw (0,0) -- (\a,\A) -- (\b,0);
+					\end{scope}
+				\end{tikzpicture}
+			\end{figure}
+		\item
+			As the value of $|\psi(x)|^2$ is maximum at $x = a$, the particle is most likely to be found at \emph{$x = a$}.
+		\item
+			The probability of finding the particle at to the left of $a$ is
+			\begin{align*}
+				\int\limits_{0}^{a} \left| \psi(x,0) \right|^2 \dif x\\
+				&= \int\limits_{0}^{a} \frac{3 x^2}{b a^2} \dif x\\
+				&= \left. \frac{x^3}{a^2 b} \right|_{0}^{a}\\
+				&= \frac{a}{b}
+			\end{align*}
+		\item
+			\begin{align*}
+				\langle x \rangle &= \int\limits_{-\infty}^{\infty} x \left| \psi(x) \right|^2 \dif x\\
+				&= \int\limits_{0}^{a} x \left( \frac{A^2 x^2}{a^2} \right) \dif x + \int\limits_{a}^{b} x \frac{A^2 (b - x)^2}{(b - a)^2} \dif x\\
+				&= \frac{1}{4 b} \left( 6 a^2 - 2 a b - b^2 \right)
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\begin{question}
+	A particle is represented, at time $t = 0$, by the following wave function.
+	\begin{align*}
+		\psi(x,0) &=
+			\begin{cases}
+				A \left( a^2 - x^2 \right) &;\quad -a \le x \le a\\
+				0 &;\quad \text{otherwise}\\
+			\end{cases}
+	\end{align*}
+	\begin{enumerate}
+		\item
+			Determine the normalization constant $A$.
+		\item
+			What is the expectation value of $x$, at time $t = 0$?
+		\item
+			What is the expectation value of $p$, at time $t = 0$?
+			Can you answer this part based on Ehrenfest's theorem?
+			Explain your answer
+		\item
+			What is the expectation value of $x^2$, at time $t = 0$?
+		\item
+			What is the expectation value of $p^2$, at time $t = 0$?
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			\begin{align*}
+				1 & = \int\limits_{-\infty}^{\infty} \left| \psi(x,0) \right|^2 \dif x\\
+				&=\int\limits_{-a}^{q} A^2 \left( a^2 - x^2 \right) \dif x\\
+				&= \frac{16 a^2}{15 A^2}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				A^2 &= \frac{15}{16 a^2}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				A &= \sqrt{\frac{15}{16 a^2}}
+			\end{align*}
+		\item
+			\begin{align*}
+				\langle x \rangle &= \int\limits_{-a}^{a} x \left| \psi(x,0) \right|^2 \dif x\\
+				&= \int\limits_{-a}^{a} x A^2 \left( a^2 - x^2 \right)^2 \dif x
+			\end{align*}
+			As the function is odd, and the interval is symmetric across the origin, the integral is zero.\\
+			Therefore,
+			\begin{align*}
+				\langle x \rangle &= 0
+			\end{align*}
+		\item
+			By Ehrenfest's theorem,
+			\begin{align*}
+				\langle p \rangle &= m \langle v \rangle\\
+				&= m \dod{\langle x \rangle}{t}\\
+				&= 0
+			\end{align*}
+		\item
+			\begin{align*}
+				\left\langle x^2 \right\rangle &= \int\limits_{-a}^{a} x^2 \left| \psi(x,0) \right|^2 \dif x\\
+				&= \int\limits_{-a}^{a} x^2 A^2 \left( a^2 - x^2 \right)^2 \dif x\\
+				&= 2 \int\limits_{0}^{a} x^2 A^2 \left( a^2 - x^2 \right)^2 \dif x\\
+				&= \frac{a^2}{7}
+			\end{align*}
+		\item
+			\begin{align*}
+				\left\langle p^2 \right\rangle &= \int\limits_{-a}^{a} \psi^*(x,0) \left( -\hbar^2 \right) \dpd[2]{}{x} \psi(x,0) \dif x\\
+				&= \int\limits_{-a}^{a} A \left( a^2 - x^2 \right) \left( -\hbar^2 \right) \dpd[2]{}{x} A \left( a^2 - x^2 \right) \dif x\\
+				&= \frac{5 \hbar^2}{2 a^2}
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\end{document}
