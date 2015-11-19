@@ -1,0 +1,198 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+%\usepackage[top = 2cm, bottom = 1cm, left = 1cm, right = 1cm]{geometry}
+\usepackage{exsheets, tasks}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{ulem} %underline for \emph{}
+\usepackage{xfrac} %inline fractions
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+\usepackage[utf8]{inputenc}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\newcommand{\AxisRotator}[1][rotate=0]{
+	\tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+} %rotation symbols on axes
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\curl}{\mathrm{curl\,}}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\thesubsection}{(\arabic{subsection})}
+\renewcommand{\thesection}{(\arabic{section})}
+
+\renewcommand{\emph}{\uline}
+
+\renewcommand{\tilde}{\widetilde}
+
+%section headings on left
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+	\z@{\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\centering}}% DELETED
+	{\normalfont}}% NEW
+\def\section{\@startsection{section}{1}%
+	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\scshape\centering}}% DELETED
+	{\normalfont\scshape}}% NEW
+\makeatother
+
+%forces newline after subsection
+\makeatletter
+\def\subsection{\@startsection{subsection}{3}%
+	\z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+	{\normalfont\itshape}}
+\makeatother
+
+\settasks{counter-format = tsk[1].}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title{Quantum and Solid State Physics : Assignment 5}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{19}{11}{2015}}
+
+\begin{document}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\setcounter{question}{1}
+\begin{question}
+	Consider a particle described by a wave function $\psi(x,t)$, which solves the Schrödinger equation for a potential $V(x)$.\\
+	The potential is modified such that the new potential is $V(x) + V_0$.
+	In classical mechanics this addition doesn't have a meaning.
+	What about quantum mechanics?
+	\begin{enumerate}
+		\item Show that the new solution to the Schrödinger equation has the form $\psi(x,t) e^{-\frac{i V_0 t}{h}}$.
+		\item How would this change in potential change the expectation values of the position operator $\hat{x}$, the momentum operator $\hat{p}$, and a general operator $\hat{Q}\left( \hat{x},\hat{p} \right)$?
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			Let
+			\begin{align*}
+				\Psi(x,t) & = \psi(x)
+			\end{align*}
+			As it a solution to the Schrödinger equation,
+			\begin{align*}
+				i \hbar \frac{\psi(x) \varphi'(t)}{\psi(x) \varphi(t)} & = V_0
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				i \hbar \frac{\psi(x) \tilde{\varphi}'(t)}{\psi(x) \tilde{\varphi}(t)} & = V_0 + V(x)
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\tilde{\varphi(t)} & = e^{-\frac{i V(x) t}{\hbar}} e^{-\frac{i V_0 t}{\hbar}}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\Psi(x,t) & = \psi(x) \tilde{\varphi}(t) \\
+                                          & = \Psi(x,t) e^{-\frac{i V_0 t}{\hbar}}
+			\end{align*}
+			\qed
+		\item
+			\begin{align*}
+				\tilde{\langle x \rangle} & = \int\limits_{-\infty}^{\infty} \tilde{\Psi}^* x \tilde{\Psi} \dif x                                      \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* e^{\frac{i V_0 t}{\hbar}} x \Psi e^{-\frac{i V_0 t}{\hbar}} \dif x \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* x \Psi \dif x                                                      \\
+                                                          & = \langle x \rangle
+			\end{align*}
+			Therefore, the change in potential \emph{does not change} the expectation value of $x$.
+			\begin{align*}
+				\tilde{\langle p \rangle} & = \int\limits_{-\infty}^{\infty} \tilde{\Psi}^* \left( -i \hbar \dod{}{x} \tilde{\Psi} \right) \dif x                                      \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* e^{\frac{i V_0 t}{\hbar}} \left( -i \hbar \dod{}{x} \Psi e^{-\frac{i V_0 t}{\hbar}} \right) \dif x \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* e^{\frac{i V_0 t}{\hbar}} e^{-\frac{i V_0 t}{\hbar}} \left( -i \hbar \dod{}{x} \Psi \right) \dif x \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^*(x,t) \left( -i \hbar \dod{}{x} \Psi(x,t) \right) \dif x                                            \\
+                                                          & = \langle p \rangle
+			\end{align*}
+			Therefore, the change in potential \emph{does not change} the expectation value of $p$.
+			\begin{align*}
+				\tilde{\langle Q \rangle} & = \int\limits_{-\infty}^{\infty} \tilde{\Psi}^* \hat{Q} \tilde{\Psi} \dif x                                      \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* e^{\frac{i V_0 t}{\hbar}} \hat{Q} \Psi e^{-\frac{i V_0 t}{\hbar}} \dif x \\
+                                                          & = \int\limits_{-\infty}^{\infty} \Psi^* \hat{Q} \Psi \dif x                                                      \\
+                                                          & = \langle Q \rangle
+			\end{align*}
+			Therefore, the change in potential \emph{does not change} the expectation value of $Q$.
+	\end{enumerate}
+\end{solution}
+
+\begin{question}
+	Prove the following commutation relations.
+	\begin{enumerate}
+		\item $\left[ \hat{p},\hat{x}^n \right] = -i \hbar n \hat{x}^{n - 1}$
+		\item $\left[ \hat{x},\hat{p}^2 \right] = 2 i \hbar \hat{p}$
+	\end{enumerate}
+\end{question}
+
+\begin{question}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			\begin{align*}
+				\left[ \hat{p},\hat{x}^n \right]f(x) & = \hat{p} \hat{x}^n f(x) - \hat{x}^n \hat{p} f(x)                          \\
+                                                                     & = \hat{p} x^n f(x) - \hat{x}^n \left( -i \hbar \dod{}{x}f(x) \right)       \\
+                                                                     & = -i \hbar \dod{}{x}\left( x^n f(x) \right) + i \hbar x^n f'(x)            \\
+                                                                     & = -i \hbar \left( n x^{n - 1} f(x) + x^n f'(x) \right) + i \hbar x^n f'(x) \\
+                                                                     & = -i \hbar n x^{n - 1} f(x)                                                \\
+                                                                     & = -i \hbar n \hat{x}^{n - 1} f(x)
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\left[ \hat{p},\hat{x}^n \right] & = -i \hbar n \hat{x}^{n - 1}
+			\end{align*}
+			\qed
+		\item
+			\begin{align*}
+				\left[ \hat{x},\hat{p}^2 \right]f(x) & = \hat{x} \hat{p}^2 f(x) - \hat{p}^2 \hat{x} f(x)                                                                               \\
+                                                                     & = \hat{x} \hat{p} \hat{p} f(x) - \hat{p} \hat{p} \hat{x} f(x)                                                                   \\
+                                                                     & = \hat{x} \hat{p} \left( -i \hbar \dod{}{x} f(x) \right) - \hat{p} \hat{p} x f(x)                                               \\
+                                                                     & = \hat{x} \left( -i \hbar \dod{}{x}\left( \dod{}{x} f(x) \right) \right) - \hat{p} \left( -i \hbar \dod{}{x} x f(x) \right)     \\
+                                                                     & = x \left( -i \hbar \dod{}{x}\left( \dod{}{x} f(x) \right) \right) + i \hbar \dod{}{x} \left( -i \hbar \dod{}{x} x f(x) \right) \\
+                                                                     & = x \left( -i \hbar f''(x) \right) + i \hbar \dod{}{x} \left( -i \hbar x f'(x) - i \hbar f(x) \right)                           \\
+                                                                     & = -i \hbar x f''(x) + i \hbar \left( -i \hbar x f''(x) - i \hbar f'(x) - i \hbar f'(x) \right)                                  \\
+                                                                     & = i \hbar \left( -x f''(x) - i \hbar x f''(x) - i \hbar f'(x) - i \hbar f'(x)  \right)                                          \\
+                                                                     & = -i \hbar \left( x f''(x) + i \hbar x f''(x) + i \hbar f'(x) + i \hbar f'(x)  \right)                                          \\
+                                                                     & = 2 i \hbar \hat{p} f(x)
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\left[ \hat{x},\hat{p}^2 \right] & = 2 i \hbar \hat{p}
+			\end{align*}
+			\qed
+	\end{enumerate}
+\end{question}
+
+\end{document}
