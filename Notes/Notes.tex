@@ -5038,6 +5038,15 @@ Hence, there are quantum wells created in the energy bands.
 	\label{fig:Quantum_Wells_due_to_Varying_Energy_Band_Gaps}
 \end{figure}
 
+\section{Optical Absorption}
+
+Let a sample be illuminated with light of photon energy greater than the energy band gap of the material of the sample.\\
+Therefore, the electrons in the valence band absorb this energy, and move to the conduction band.
+Such electrons are called hot electrons.
+Hot electrons then lose energy till they reach $E_C$.
+Thereafter, they recombine with holes in the valence band, and in the process give out photons corresponding to the energy band gap of the material.\\
+This emitted light can be observed, and used to find the energy band gap of the material.
+
 \section{Optical Generation of Carriers}
 
 Consider a sample illuminated by light with photons of energy greater than the energy gap of the material of the sample.
@@ -5050,13 +5059,178 @@ Therefore,
 	p &= p_0 + \hat{p}
 \end{align*}
 
-\section{Optical Absorption}
+\subsection{Carrier Generation Dependent on Illumination}
 
-Let a sample be illuminated with light of photon energy greater than the energy band gap of the material of the sample.\\
-Therefore, the electrons in the valence band absorb this energy, and move to the conduction band.
-Such electrons are called hot electrons.
-Hot electrons then lose energy till they reach $E_C$.
-Thereafter, they recombine with holes in the valence band, and in the process give out photons corresponding to the energy band gap of the material.\\
-This emitted light can be observed, and used to find the energy band gap of the material.
+Consider a sample such that
+\begin{align*}
+	N_d &= 10^{16} \si{\per\centi\metre\cubed}
+\end{align*}
+Therefore the intensity of light affects the concentration of charge carriers.\\
+For no light,
+\begin{align*}
+	n &= n_0\\
+	&= N_d\\
+	&= 10^{16} \si{\per\centi\metre\cubed}\\
+	p &= p_0\\
+	&= \frac{{n_i}^2}{N_d}\\
+	&= 10^4 \si{\per\centi\metre\cubed}
+\end{align*}
+For low level injection, i.e. ${p_0 < \hat{n} = \hat{p} < n_0}$, say $\hat{n} = \hat{p} \approx 10^{14} \si{\per\centi\metre\cubed}$,
+\begin{align*}
+	n &= n_0 + \hat{n}\\
+	&= 10^{16} + 10^{14}\\
+	&\approx 10^{16} \si{\per\centi\metre\cubed}\\
+	p &= p_0 + \hat{p}\\
+	&= 10^4 + 10^{14}\\
+	&\approx 10^{14} \si{\per\centi\metre\cubed}
+\end{align*}
+For high level injection, i.e. ${p_0 < \hat{n} = \hat{p} < n_0}$, say $\hat{n} = \hat{p} \approx 10^{20} \si{\per\centi\metre\cubed}$,
+\begin{align*}
+	n &= n_0 + \hat{n}\\
+	&= 10^{16} + 10^{20}\\
+	&\approx 10^{20} \si{\per\centi\metre\cubed}\\
+	p &= p_0 + \hat{p}\\
+	&= 10^4 + 10^{20}\\
+	&\approx 10^{20} \si{\per\centi\metre\cubed}
+\end{align*}
+Therefore, the concentrations are as shown in Figure \ref{fig:Carrier_Concentration_in_N-type_Material_under_Different_Light Conditions}.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[yscale = 0.5]
+		\def\yMIN{0};
+		\def\yMAX{21};
+
+		\def\l{4};
+
+		\begin{scope}[-stealth]
+			\draw (0,\yMIN) -- (0,\yMAX) node [above] {$n$, $p$};
+		\end{scope}
+
+		\begin{scope}
+			\foreach \y in {\yMIN,...,\yMAX}
+			{
+				\filldraw (0,\y) circle (1pt) node [left] {$10^{\y}$};
+			}
+		\end{scope}
+
+		\begin{scope}
+			\draw (0,4) -- (\l,4) node [midway, below] {$p = p_0$};
+			\draw (0,16) -- (\l,16) node [midway, above] {$n = n_0$};
+		\end{scope}
+
+		\begin{scope}
+			\draw (\l,14) -- (2*\l,14) node [midway, below] {$p = p_0 + \hat{p}$};
+			\draw (\l,16.01) -- (2*\l,16.01) node [midway, above] {$n = n_0 + \hat{n}$};
+		\end{scope}
+
+		\begin{scope}
+			\draw (2*\l,20) -- (3*\l,20) node [midway, below] {$p = p_0 + \hat{p}$};
+			\draw (2*\l,20.2) -- (3*\l,20.2) node [midway, above] {$n = n_0 + \hat{n}$};
+		\end{scope}
+
+		\begin{scope}
+			\draw [decorate, decoration = {brace, mirror}, yshift = -10] (0,0) -- (\l,0) node [midway, below] {No Light};
+			\draw [decorate, decoration = {brace, mirror}, yshift = -10] (\l,0) -- (2*\l,0) node [midway, below] {Low Level Injection};
+			\draw [decorate, decoration = {brace, mirror}, yshift = -10] (2*\l,0) -- (3*\l,0) node [midway, below] {High Level Injection};
+		\end{scope}
+
+		\begin{scope}[dashed]
+			\draw (\l,\yMIN) -- (\l,\yMAX);
+			\draw (2*\l,\yMIN) -- (2*\l,\yMAX);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Carrier Concentration in N-type Material under Different Light Conditions}
+	\label{fig:Carrier_Concentration_in_N-type_Material_under_Different_Light Conditions}
+\end{figure}
+
+
+\subsection{Minority Carrier Concentration in Illuminated Materials}
+
+Consider a N-type material which is illuminated from $t = 0$ onwards.\\
+The rate of recombination is defined to be
+\begin{align*}
+	R &= \alpha_r n p
+\end{align*}
+Therefore, in case of low level injection,
+\begin{align*}
+	R &= \alpha_r n p\\
+	&= \alpha_r \left( n_0 + \hat{n} \right) \left( p_0 + \hat{p} \right)\\
+	&= \alpha_r \left( n_0 p_0 + n_0 \hat{p} + p_0 \hat{n} \hat{p} \hat{n} \right)
+	\marginnote
+	{
+		As $p_0 \hat{n}$ and $\hat{p} \hat{n}$ are small compared to $n_0 p_0$ and $n_0 \hat{p}$.
+	}\\
+	&= \alpha_r \left( {n_i}^2 + n_0 \hat{p} \right)\\
+	&= \alpha_r {n_i}^2 + \alpha_r n_0 \hat{p}\\
+	&= R_{\text{thermal}} + R_{\text{optical}}
+\end{align*}
+Therefore,
+\begin{align*}
+	G - R &= G_{\text{thermal}} + G_{\text{optical}} - R_{\text{thermal}} + R_{\text{optical}}\\
+	&= G_{\text{optical}} - R_{\text{optical}}
+\end{align*}
+In the steady state, the generation of EHPs is balanced by recombination.\\
+Therefore,
+\begin{align*}
+	G &= R\\
+	\therefore G_{\text{optical}} &= R_{\text{optical}}\\
+\end{align*}
+As the rate of recombination cannot increase instantaneously, $\hat{p}$ must be a function of time.
+
+\begin{definition}[Lifetime of minority carriers]
+	\begin{align*}
+		\tau_p &= \frac{1}{\alpha_r n_0}
+	\end{align*}
+	is called the lifetime of the minority carriers
+\end{definition}
+
+Therefore,
+\begin{align*}
+	R &= \alpha_r n_0 \hat{p}\\
+	&= \frac{\hat{p}}{\tau_p}
+\end{align*}
+Therefore, at steady state,
+\begin{align*}
+	G_{\text{optical}} &= R_{\text{optical}}\\
+	&= \frac{\hat{p}}{\tau_p}
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{p} &= G_{\text{optical}} \tau_p
+\end{align*}
+Therefore, before the steady state,
+\begin{align*}
+	G - R &= \dod{\hat{p}}{t}\\
+	\therefore G_{\text{optical}} - \frac{\hat{p}(t)}{\tau_p} &= \dod{\hat{p}}{t}
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\hat{p}(t) &= G_{\text{optical}} \tau_p \left( 1 - e^{-\frac{t}{\tau_p}} \right)
+\end{align*}
+~\\
+Similarly, for a sample which is stopped being illuminated at $t = 0$,
+\begin{align*}
+	\hat{p}(t) &= G_{\text{optical}} \tau_p e^{-\frac{t}{\tau_p}}
+\end{align*}
+
+\subsection{Conductivity of Illuminated Materials}
+
+When a sample is not illuminated,
+\begin{align*}
+	J &= \sigma_0 E
+\end{align*}
+When the sample has light shined on it,
+\begin{align*}
+	J &= \left( \sigma_0 + \hat{\sigma} \right) E
+\end{align*}
+Therefore,
+\begin{align*}
+	\Delta \sigma &= \hat{\sigma}\\
+	&= \sigma_{\text{light}} - \sigma_{\text{dark}}\\
+	&= \left( q \mu_n \left( n + \hat{n} \right) + q \mu_p \left( p + \hat{p} \right) \right) - \left( q \mu_n n + q \mu_p p  \right)\\
+	&= q \mu_p \hat{p} + q \mu_n \hat{n}\\
+	&= q G_{\text{optical}} \tau_p (\mu_p + \mu_n)
+\end{align*}
 
 \end{document}
