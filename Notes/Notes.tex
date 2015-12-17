@@ -2554,44 +2554,6 @@ Therefore,
 		\end{cases}
 \end{align*}
 
-\subsection{Finite Barrier}
-
-Consider a potential
-\begin{align*}
-	V(x) &=
-		\begin{cases}
-			0 &;\quad x < 0\\
-			V_0 &;\quad 0 < x < a\\
-			0 &;\quad a < x\\
-		\end{cases}
-\end{align*}
-Therefore, this potential can be considered to be
-\begin{align*}
-	V(x) &= V_1(x) - V_2(x)
-\end{align*}
-where
-\begin{align*}
-	V_1(x) &=
-		\begin{cases}
-			0 &;\quad x < 0\\
-			V_0 &;\quad x > 0\\
-		\end{cases}\\
-	V_2(x) &=
-		\begin{cases}
-			0 &;\quad x < a\\
-			V_0 &;\quad x > a\\
-		\end{cases}
-\end{align*}
-Hence, due to tunnelling, a quantum particle can go through this barrier, and the wave function is
-\begin{align*}
-	\psi(x) &=
-		\begin{cases}
-			A e^{i k_1 x} + B e^{-i k_1 x} &;\quad x < 0\\
-			D e^{-k_1 x} &;\quad 0 < x < a\\
-			F e^{i k_1 x} + G e^{-i k_1 x} &;\quad a < x\\
-		\end{cases}
-\end{align*}
-
 \subsection{$\delta$ Barrier}
 
 Consider a potential
@@ -2651,8 +2613,8 @@ Let
 \end{align*}
 Therefore,
 \begin{align*}
-	\frac{B}{A} &= \frac{i \beta}{1 + i \beta}\\
-	\frac{C}{A} &= \frac{1}{1 - i \beta}
+	\frac{B}{A} &= \frac{-i \beta}{1 + i \beta}\\
+	\frac{C}{A} &= \frac{1}{1 + i \beta}
 \end{align*}
 Similarly, if
 \begin{align*}
@@ -2672,8 +2634,8 @@ Let
 \end{align*}
 Therefore,
 \begin{align*}
-	\frac{B}{A} &= -\frac{i \beta}{1 + i \beta}\\
-	\frac{C}{A} &= \frac{1}{1 + i \beta}
+	\frac{B}{A} &= \frac{i \beta}{1 + i \beta}\\
+	\frac{C}{A} &= \frac{1}{1 - i \beta}
 \end{align*}
 
 \subsection{Double $\delta$ Barrier}
@@ -2778,6 +2740,343 @@ Therefore,
 		J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)
 	\end{align*}
 \end{definition}
+
+\subsection{$\delta$ Barrier}
+
+Consider a potential
+\begin{align*}
+	V(x) &= V_0 \delta(x)
+\end{align*}
+Therefore, the wave function is
+\begin{align*}
+	\psi(x) &=
+		\begin{cases}
+			A e^{i k x} + B e^{-i k x} &;\quad x < 0\\
+			C e^{i k x} &;\quad x > 0\\
+		\end{cases}
+\end{align*}
+Let the incident, reflected, and transmitted wave functions be
+\begin{align*}
+	\psi_I &= A e^{i k x}\\
+	\psi_R &= B e^{-i k x}\\
+	\psi_T &= C e^{i k x}
+\end{align*}
+Therefore,
+\begin{align*}
+	\psi_I(x) &= A e^{i k x}\\
+	\psi_I(x,t) &= A e^{i k x} e^{-\frac{i E t}{\hbar}}\\
+	{\psi_I}^*(x,t) &= A^* e^{-i k x} e^{\frac{i E t}{\hbar}}
+\end{align*}
+Therefore,
+\begin{align*}
+	\dpd{\psi_I}{x} &= i k A e^{i k x} e^{-\frac{i E t}{\hbar}}\\
+	\dpd{{\psi_I}^*}{x} &= -i k A^* e^{-i k x} e^{\frac{i E t}{\hbar}}
+\end{align*}
+Therefore, the probability current for the incident wave is
+\begin{align*}
+	J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)\\
+	J_I(x,t) &= \frac{i \hbar}{2 m} \left( \psi_I \dpd{{\psi_I}^*}{x} - {\psi_I}^* \dpd{\psi_I}{x} \right)\\
+	&= \frac{i \hbar}{2 m} \left( -i k |A|^2 - i k |A|^2 \right)\\
+	&= \frac{\hbar |A|^2 k}{m}
+\end{align*}
+Similarly, the probability current for the reflected wave is
+\begin{align*}
+	J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)\\
+	J_R(x,t) &= \frac{i \hbar}{2 m} \left( \psi_R \dpd{{\psi_R}^*}{x} - {\psi_R}^* \dpd{\psi_R}{x} \right)\\
+	&= \frac{i \hbar}{2 m} \left( i k |A|^2 + i k |A|^2 \right)\\
+	&= -\frac{\hbar |A|^2 k}{m}
+\end{align*}
+Similarly, the probability current for the incident wave is
+\begin{align*}
+	J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)\\
+	J_T(x,t) &= \frac{i \hbar}{2 m} \left( \psi_T \dpd{{\psi_T}^*}{x} - {\psi_T}^* \dpd{\psi_T}{x} \right)\\
+	&= \frac{i \hbar}{2 m} \left( -i k |A|^2 - i k |A|^2 \right)\\
+	&= \frac{\hbar |A|^2 k}{m}
+\end{align*}
+Let the transmission and reflection coefficients be $T$ and $R$ respectively.
+Therefore, substituting the boundary conditions,
+\begin{align*}
+	T &= \frac{|J_T|}{|J_I|}\\
+	&= \frac{|C|^2}{|A|^2}\\
+	&= \frac{1}{1 + \frac{m {V_0}^2}{2 \hbar^2 E}}\\
+	R &= \frac{|J_R|}{|J_I|}\\
+	&= \frac{|B|^2}{|A|^2}\\
+	&= \frac{1}{1 + \frac{2 \hbar^2 E}{m {V_0}^2}}
+\end{align*}
+Therefore,
+\begin{align*}
+	T + R &= 1
+\end{align*}
+This is consistent with the expectations, as the total energy must be conserved.\\
+The fact that $T \neq 0$ shows that even though the barrier exists, the particle does not bounce back, but instead tunnels through th barrier.
+A classical particle would not exhibit such a behaviour.
+
+\subsection{Finite Barrier}
+
+Consider a potential
+\begin{align*}
+	V(x) &=
+		\begin{cases}
+			0 &;\quad x < 0\\
+			V_0 &;\quad 0 < x < L\\
+			0 &;\quad L < x\\
+		\end{cases}
+\end{align*}
+Therefore, this potential can be considered to be
+\begin{align*}
+	V(x) &= V_1(x) - V_2(x)
+\end{align*}
+where
+\begin{align*}
+	V_1(x) &=
+		\begin{cases}
+			0 &;\quad x < 0\\
+			V_0 &;\quad x > 0\\
+		\end{cases}\\
+	V_2(x) &=
+		\begin{cases}
+			0 &;\quad x < L\\
+			V_0 &;\quad x > L\\
+		\end{cases}
+\end{align*}
+Consider a single particle approaching the barrier from the left,
+Hence, due to tunnelling, a quantum particle can go through this barrier, and the wave function is
+\begin{align*}
+	\psi(x) &=
+		\begin{cases}
+			A e^{i k_1 x} + B e^{-i k_1 x} &;\quad x < 0\\
+			C e^{k_2 x} + D e^{-k_2 x} &;\quad 0 < x < L\\
+			F e^{i k_1 x} + G e^{-i k_1 x} &;\quad L < x\\
+		\end{cases}
+\end{align*}
+where
+\begin{align*}
+	k_1 &= \sqrt{\frac{2 m E}{\hbar^2}}\\
+	k_1 &= \sqrt{-\frac{2 m (E - V_0)}{\hbar^2}}
+\end{align*}
+Therefore, solving as for the $\delta$ barrier,
+\begin{align*}
+	T &= \frac{|J_T|}{|J_I|}\\
+	&= \frac{|F|^2}{|A|^2}\\
+	&= \frac{4 {k_1}^2 {k_2}^2}{\left( {k_1}^2 + {k_2}^2 \right) \sinh^2 (k_2 L) + 4 {k_1}^2 {k_2}^2}\\
+	R &= \frac{|J_R|}{|J_I|}\\
+	&= \frac{|B|^2}{|A|^2}\\
+	&= \frac{\left( {k_1}^2 + {k_2}^2 \right) \sinh^2 (k_2 L)}{\left( {k_1}^2 + {k_2}^2 \right) \sinh^2 (k_2 L) + 4 {k_1}^2 {k_2}^2}
+\end{align*}
+
+\section{Quantum Harmonic Oscillator}
+
+Consider a potential
+\begin{align*}
+	V(x) &= \frac{1}{2} m \omega^2 x^2
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{H} &= \frac{\hat{p}^2}{2 m} + \frac{1}{2} m \omega^2 \hat{x}^2
+\end{align*}
+and
+\begin{align*}
+	\hat{H} \psi(x) &= E \psi(x)
+\end{align*}
+Therefore,
+\begin{align*}
+	\left( m \omega \hat{x} + i \hat{p} \right) \left( m \omega \hat{x} - i \hat{p} \right) &= \left( m \omega \hat{x} \right)^2 - i m \omega \hat{x} \hat{p} + i m \omega \hat{p} \hat{x} + \hat{p}^2\\
+	&= \left( m \omega \hat{x} \right)^2 + i m \omega \left[ \hat{p} , \hat{x} \right] + \hat{p}^2
+	\marginnote
+	{
+		$\left[ \hat{p} , \hat{x} \right]$ is the commutation of $\hat{p}$ and $\hat{x}$.
+	}\\
+	&= \left( m \omega \hat{x} \right)^2 + i m \omega (- i \hbar) + \hat{p}^2\\
+	&= \left( m \omega \hat{x} \right)^2 + m \omega \hbar + \hat{p}^2\\
+	\therefore \hat{p}^2 + \left( m \omega \hat{x} \right)^2 &= \left( m \omega \hat{x} + i \hat{p} \right) \left( m \omega \hat{x} - i \hat{p} \right) - m \omega \hbar
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{H} &= \frac{1}{2 m} \left( \hat{p} + m^2 \omega^2 \hat{x}^2 \right)\\
+	&= \frac{1}{2 m} \left( \hat{p} + \left( m \omega \hat{x} \right)^2 \right)\\
+	&= \frac{1}{2 m} \left( \left( m \omega \hat{x} + i \hat{p} \right) \left( m \omega \hat{x} - i \hat{p} \right) - m \omega \hbar \right)\\
+	&= \hbar \omega \left( \frac{1}{\sqrt{2 m \hbar \omega}} \left( m \omega \hat{x} + i \hat{p} \right) \frac{1}{\sqrt{2 m \hbar \omega}} \left( m \omega \hat{x} - i \hat{p} \right) - \frac{1}{2} \right)
+\end{align*}
+
+\begin{definition}[Lowering and Raising Operators]
+	The raising operator $\hat{a}_+$ and the lowering operator $\hat{a}_-$ are defined as
+	\begin{align*}
+		\hat{a}_+ &= \frac{1}{\sqrt{2 m \hbar \omega}} \left( m \omega \hat{x} - i \hat{p} \right)\\
+		\hat{a}_- &= \frac{1}{\sqrt{2 m \hbar \omega}} \left( m \omega \hat{x} + i \hat{p} \right)
+	\end{align*}
+\end{definition}
+
+Therefore,
+\begin{align*}
+	\hat{H} &= \hbar \omega \left( \hat{a}_- \hat{a}_+ - \frac{1}{2} \right)
+\end{align*}
+The commutation of $\hat{a}_-$ and $\hat{a}_+$ is
+\begin{align*}
+	\left[ \hat{a}_- , \hat{a}_+ \right] &= \frac{1}{2 m \hbar \omega} \left[ m \omega \hat{x} + i \hat{p} , m \omega \hat{x} - i \hat{p} \right]\\
+	&= \frac{1}{2 m \hbar \omega} \left( \left( m \omega \hat{x} + i \hat{p} \right) \left( m \omega \hat{x} - i \hat{p} \right) - \left( m \omega \hat{x} - i \hat{p} \right) \left( m \omega \hat{x} + i \hat{p} \right) \right)\\
+	&= \frac{1}{2 m \hbar \omega} \left( \left( m \omega \hat{x} \right)^2 + \hat{p}^2 + m \omega \hbar - \left( m \omega \hat{x} \right)^2 - \hat{p}^2 - \left( i m \omega \hat{x} \hat{p} - i m \omega \hat{p} \hat{x} \right) \right)\\
+	&= \frac{1}{2 m \hbar \omega} \left( \left( m \omega \hat{x} \right)^2 + \hat{p}^2 + m \omega \hbar - \left( m \omega \hat{x} \right)^2 - \hat{p}^2 - i m \omega \left[ \hat{x} , \hat{p} \right] \right)\\
+	&= \frac{1}{2 m \hbar \omega} \left( \left( m \omega \hat{x} \right)^2 + \hat{p}^2 + m \omega \hbar - \left( m \omega \hat{x} \right)^2 - \hat{p}^2 - i m \omega (i \hbar) \right)\\
+	&= \frac{1}{2 m \hbar \omega} \left( \left( m \omega \hat{x} \right)^2 + \hat{p}^2 + m \omega \hbar - \left( m \omega \hat{x} \right)^2 - \hat{p}^2 + m \omega \hbar \right)\\
+	&= \frac{1}{2 m \hbar \omega} \left( m \omega \hbar + m \omega \hbar \right)\\
+	&= 1
+\end{align*}
+Therefore,
+\begin{align*}
+	\left[ \hat{a}_- , \hat{a}_+ \right] &= 1\\
+	\left[ \hat{a}_+ , \hat{a}_- \right] &= -1
+\end{align*}
+The commutation of $\hat{H}$ and $\hat{a}_+$ is
+\begin{align*}
+	\left[ \hat{H} , \hat{a}_+ \right] &= \left[ \hbar \omega \left( \hat{a}_- \hat{a}_+ - \frac{1}{2} \right) , \hat{a}_+ \right]\\
+	&= \hbar \omega \left( \hat{a}_- \hat{a}_+ - \frac{1}{2} \right) a_+ - \hbar \omega a_+ \left( \hat{a}_- \hat{a}_+ - \frac{1}{2} \right)\\
+	&= \hbar \omega \left( \hat{a}_- \hat{a}_+ \hat{a}_+ - \frac{1}{2} \hat{a}_+ - \hat{a}_+ \hat{a}_- \hat{a}_+ + \frac{1}{2} \hat{a}_+ \right)\\
+	&= \hbar \omega \left[ \hat{a}_- , \hat{a}_+ \right] \hat{a}_+\\
+	&= \hbar \omega \hat{a}_+
+\end{align*}
+Similarly,
+\begin{align*}
+	\left[ \hat{H} , \hat{a}_- \right] &= -\hbar \omega \hat{a}_-
+\end{align*}
+
+\subsection{Effect of $\hat{a}_{\pm}$ on $\psi(x)$}
+
+Let $E$ be an eigenvalue of $\hat{H}$ corresponding to the eigenfunction $\psi(x)$.\\
+Therefore,
+\begin{align*}
+	\hat{H} \psi(x) &= E \psi(x)
+\end{align*}
+Therefore,
+\begin{align*}
+	H \hat{a}_+ \psi(x) &= \left( \hbar \omega \hat{a}_+ + \hat{a}_+ \hat{H} \right) \psi(x)\\
+	&= \hbar \omega \hat{a}_+ \psi(x) + E \hat{a}_+ \psi(x)\\
+	&= (E + \hbar \omega) \hat{a}_+ \psi(x)
+\end{align*}
+Therefore, $\hat{a}_+ \psi(x)$ is also an eigenfunction of $\hat{H}$ with eigenvalue $(E + \hbar \omega)$.\\
+Similarly, $\hat{a}_- \psi(x)$ is also an eigenfunction of $\hat{H}$ with eigenvalue $(E - \hbar \omega)$.\\
+~\\
+Hence, as the difference between any two consecutive eigenvalues of $H$ is $\hbar \omega$, all eigenvalues are evenly spaced.
+Therefore, the energy levels form a ladder as in Figure \ref{fig:Energy_Level_Ladder_for_Quantum_Harmonic_Oscillator}.
+Hence, the raising operator can be used in order to go up the ladder, and the lowering operator to go down the ladder.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\yMIN{-3};
+		\def\yMAX{3};
+
+		\def\l{4};
+
+		\begin{scope}
+			\foreach \y in {\yMIN,...,\yMAX}
+			{
+				\draw (0,\y) -- (\l,\y) node [right] {$E + (\y \hbar \omega)$};
+			}
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Energy Level Ladder for Quantum Harmonic Oscillator}
+	\label{fig:Energy_Level_Ladder_for_Quantum_Harmonic_Oscillator}
+\end{figure}
+As the potential $V(x)$ has a minimum value, the ladder is not infinite at its lower end, but is limited from below.\\
+~\\
+Let the lowest possible eigenfunction be $\psi_0$.
+As it is not possible to go lower than this state, the eigenfunction obtained after using the lowering operator on $\psi_0$ must be non-normalizable.
+Therefore, as $\psi(x) \equiv 0$ is non-normalizable, let
+\begin{align*}
+	\hat{a}_- \psi_0 &= 0
+\end{align*}
+Therefore,
+\begin{align*}
+	0 &= \frac{1}{\sqrt{2 m \hbar \omega}} \left( m \omega \hat{x} + i \hat{p} \right) \psi_0\\
+	&= \left( m \omega \hat{x} + i (-i \hbar) \dpd{}{x} \right) \psi_0\\
+	&= \left( m \omega \hat{x} + \hbar \dpd{}{x} \right) \psi_0
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\psi_0(x) &= \left( \frac{m \omega}{\hbar \pi} \right)^{\frac{1}{4}} e^{-\frac{m \omega}{2 \hbar} x^2}
+\end{align*}
+Therefore, the lowest eigenfunction is a Gaussian function.\\
+All other eigenfunctions can be obtained by applying $\hat{a}_+$ repeatedly on $\psi_0$.\\
+~\\
+Let the eigenvalue of $\hat{H}$ corresponding to $\psi_0$ be $E_0$.
+Therefore,
+\begin{align*}
+	E_0 \psi_0 &= \hat{H} \psi_0\\
+	&= \hbar \omega \left( \hat{a}_+ \hat{a}_- + \frac{1}{2} \right) \psi_0\\
+	&= \hbar \omega \hat{a}_+ \cancelto{0}{\hat{a}_- \psi_0} + \frac{1}{2} \hbar \omega \psi_0\\
+	&= 0 + \frac{1}{2} \hbar \omega \psi_0\\
+	&= \frac{1}{2} \hbar \omega \psi_0
+\end{align*}
+Therefore,
+\begin{align*}
+	E_0 &= \frac{1}{2} \hbar \omega
+\end{align*}
+Therefore,
+\begin{align*}
+	E_n &= \hbar \omega \left( \frac{1}{2} + n \right)
+\end{align*}
+Let the state obtained after using the raising or lowering operator be
+\begin{align*}
+	\hat{a}_+ \psi_n &= c_n \psi_{n + 1}\\
+	\hat{a}_- \psi_n &= d_n \psi_{n - 1}
+\end{align*}
+Let
+\begin{align*}
+	f(x) &= \hat{a}_+ \psi_n\\
+	g(x) &= \psi_n
+\end{align*}
+Therefore, the identity
+\begin{align*}
+	\int\limits_{-\infty}^{\infty} f^*(x) \left( \hat{a}_{\pm} g(x) \right) \dif x &= \int\limits_{-\infty}^{\infty} \left( \hat{a}_{\mp} f(x) \right)^* g(x) \dif x
+\end{align*}
+implies
+\begin{align*}
+	\int\limits_{-\infty}^{\infty} \left( \hat{a}_+ \psi_n \right)^* \left( \hat{a}_+ \psi_n \right) \dif x &= \int\limits_{-\infty}^{\infty} \left( \hat{a}_- \hat{a}_+ \psi_n \right)^* \psi_n \dif x\\
+	&= \int\limits_{-\infty}^{\infty} \left( \left( \frac{\hat{H}}{\hbar \omega} + \frac{1}{2} \right) \psi_n \right)^* \psi_n \dif x\\
+	&= \int\limits_{-\infty}^{\infty} \left( \left( n + \frac{1}{2} + \frac{1}{2} \right) \psi_n \right)^* \psi_n \dif x\\
+	&= \int\limits_{-\infty}^{\infty} \left( (n + 1) \psi_n \right)^* \psi_n \dif x\\
+	&= (n + 1) \int\limits_{-\infty}^{\infty} {\psi_n}^* \psi_n \dif x
+	\marginnote
+	{
+		As $\psi_n$ is normalized, $\int\limits_{-\infty}^{\infty} {\psi_n}^* \psi_n \dif x = 1$
+	}\\
+	&= (n + 1) (1)\\
+	\therefore \int\limits_{-\infty}^{\infty} \left( c_n \psi_{n + 1} \right)^* \left( c_n \psi_{n + 1} \right) \dif x &= n + 1\\
+	\therefore |c_n|^2 \int\limits_{-\infty}^{\infty} {\psi_{n + 1}}^* \psi_{n + 1} \dif x &= n + 1
+\end{align*}
+For $\psi_{n + 1}$ to be normalized,
+\begin{align*}
+	\int\limits_{-\infty}^{\infty} {\psi_{n + 1}}^* \psi_{n + 1} \dif x &= 1
+\end{align*}
+Therefore,
+\begin{align*}
+	|c_n|^2 &= n + 1
+\end{align*}
+Therefore,
+\begin{align*}
+	c_n &= \sqrt{n + 1}
+\end{align*}
+Similarly,
+\begin{align*}
+	d_n &= \sqrt{n}
+\end{align*}
+
+\subsection{Potential Energy}
+
+Let the potential energy for the harmonic oscillator be $V$.\\
+Therefore, the expectation value of $V$ for the $n$th state of the harmonic oscillator is
+\begin{align*}
+	\langle V \rangle &= \left\langle \frac{1}{2} m \omega^2 \hat{x}^2 \right\rangle\\
+	&= \frac{1}{2} m \omega^2 \int\limits_{-\infty}^{\infty} {\psi_n}^* \hat{x}^2 \psi_n \dif x
+\end{align*}
+Also,
+\begin{align*}
+	\hat{x} &= \sqrt{\frac{\hbar}{2 m \omega}} \left( \hat{a}_+ + \hat{a}_- \right)
+\end{align*}
+Therefore, substituting and solving,
+\begin{align*}
+	\langle V \rangle V &= \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)\\
+	&= \frac{E_n}{2}
+\end{align*}
 
 \newpage
 \part{Solid State Physics}
