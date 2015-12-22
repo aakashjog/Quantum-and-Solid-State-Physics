@@ -5530,4 +5530,236 @@ Therefore,
 	&= q G_{\text{optical}} \tau_p (\mu_p + \mu_n)
 \end{align*}
 
+\section{Photo-detectors}
+
+A device which changes its resistivity when exposed to light is called a photo-detector.
+The basic structure is as in Figure \ref{fig:Basic_Structure_of_a_Photo-detector}.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\l{4};
+		\def\h{1};
+
+		\begin{scope}
+			\draw (0,-\h/2) rectangle (\l,\h/2);
+			\draw [fill = black] (0,-\h/2) rectangle ++(-\l/50,\h);
+			\draw [fill = black] (\l,-\h/2) rectangle ++(\l/50,\h);
+		\end{scope}
+
+		\begin{scope}
+			\draw (-\l/50,0) -| (-\l/4,-\h);
+			\draw ($ (\l,0) + (\l/50,0) $) -| ($ (\l,0) + (\l/4,-\h) $);
+			\draw (\l/2,-\h) to [battery1] (-\l/4,-\h);
+			\draw (\l/2,-\h) to [ammeter] ($ (\l,-\h) + (\l/4,0) $);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Basic Structure of a Photo-detector}
+	\label{fig:Basic_Structure_of_a_Photo-detector}
+\end{figure}
+However, realistically the structure of the device is as in Figure \ref{fig:Actual_Structure_of_a_Photo-detector}.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\def\l{4};
+		\def\h{2};
+
+		\begin{scope}
+			\draw (-\l/2,0) rectangle (\l/2,\h);
+
+			\node at (0,\h/2) {insulating substrate};
+		\end{scope}
+
+		\begin{scope}
+			\draw (-\l/2,\h) rectangle (\l/2,2*\h);
+
+			\node at (0,3*\h/2) {semiconductor};
+		\end{scope}
+
+		\begin{scope}
+			\draw [fill = black] (-\l/4,2*\h) rectangle (-\l/2,2*\h + \h/20);
+			\draw [fill = black] (\l/4,2*\h) rectangle (\l/2,2*\h + \h/20);
+		\end{scope}
+
+		\begin{scope}
+			\draw (3*\l/8,2*\h + \h/20) |- (3*\l/8,3*\h);
+			\draw (-3*\l/8,2*\h + \h/20) |- (-3*\l/8,3*\h);
+			\draw (0,3*\h) to [battery1] (-\l/2,3*\h);
+			\draw (0,3*\h) to [ammeter] (\l/2,3*\h);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Actual Structure of a Photo-detector}
+	\label{fig:Actual_Structure_of_a_Photo-detector}
+\end{figure}
+
+\section{Continuity Equations}
+
+Consider a slice of thickness $\Delta x$ in a semiconductor sample.
+The rate of change of the number of holes in the slice, is the sum of the difference between the number of holes entering this slice and the number of holes exiting this slice, and the net rate of generation of holes.
+\begin{align*}
+	\left. \dod{p}{x} \right|_{x \to x + \Delta x} &= \frac{1}{q} \left( \frac{J_p(x) - J_p(x + \Delta x)}{\Delta x} \right) + (G - R)
+\end{align*}
+As the temperature is constant, the thermally generated carrier concentrations do not change with time.
+Therefore, the only change responsible for the change in the net carrier concentration is the change in the optically generated carrier concentration.\\
+Therefore, if the slice is infinitesimally thin,
+\begin{align*}
+	\dpd{p(x,t)}{t} &= \dpd{\hat{p}}{t}\\
+	&= -\frac{1}{q} \left( \dpd{J_p(x,t)}{x} \right) + \left( G_{\text{optical}} - \frac{\hat{p}(x,t)}{\tau_p} \right)
+\end{align*}
+Similarly, for electrons,
+\begin{align*}
+	\dpd{n(x,t)}{t} &= \dpd{\hat{n}}{t}\\
+	&= \frac{1}{q} \left( \dpd{J_n(x,t)}{x} \right) + \left( G_{\text{optical}} - \frac{\hat{n}(x,t)}{\tau_n} \right)
+\end{align*}
+
+\subsection{Uniform Carrier Distribution}
+
+Assume
+\begin{align*}
+	\overrightarrow{E} &= 0
+\end{align*}
+If the charge carrier distribution in a semiconductor is zero, i.e.,
+\begin{align*}
+	\dpd{p}{x} &= 0\\
+	\dpd{n}{x} &= 0
+\end{align*}
+there is no diffusion in the semiconductor.
+Therefore,
+\begin{align*}
+	\dpd{\hat{p}}{x} &= 0
+\end{align*}
+~\\
+If the semiconductor is illuminated,
+\begin{align*}
+	\dpd{\hat{p}}{t} &= G_{\text{optical}} - \frac{\hat{p}(t)}{\tau_p}
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\hat{p}(t) &= G_{\text{optical}} \tau_{p} \left( 1 - e^{-\frac{t}{\tau_p}} \right)
+\end{align*}
+~\\
+If the semiconductor is stopped being illuminated,
+\begin{align*}
+	\dpd{\hat{p}}{t} &= -\frac{\hat{p}(t)}{\tau_p}
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\dpd{\hat{p}}{t} &= \hat{p}_0 e^{-\frac{t}{\tau_p}}
+\end{align*}
+where $\hat{p}_0$ is the initial condition.
+
+\subsection{Non-uniform Illumination, Steady State Injection, Illumination only at End}
+
+\begin{definition}[Diffusion length]
+	\begin{align*}
+		L_p &= \sqrt{D_p \tau_p}
+	\end{align*}
+	is defined to be the diffusion length for holes.
+	\begin{align*}
+		L_n &= \sqrt{D_n \tau_n}
+	\end{align*}
+	is defined to be the diffusion length for electrons.
+\end{definition}
+
+Consider a N-type semiconductor sample, connected to an ohmic contact at one end and illuminated only at $x = 0$.\\
+Assume
+\begin{align*}
+	\overrightarrow{E} &= 0
+\end{align*}
+If the illumination is non-uniform,
+\begin{align*}
+	\dpd{p}{x} &\neq 0\\
+	\dpd{n}{x} &\neq 0
+\end{align*}
+If the illumination is a steady state injection,
+\begin{align*}
+	\dpd{p}{t} &= 0\\
+	\dpd{n}{t} &= 0
+\end{align*}
+Therefore, the continuity equation for holes is
+\begin{align*}
+	\dpd{\hat{p}(x,t)}{t} &= -\frac{1}{q} \dpd{J_p(x,t)}{x} - \frac{\hat{p}(x,t)}{\tau_p}\\
+	\therefore 0 &= -\frac{1}{q} \dpd{J_p(x,t)}{x} - \frac{\hat{p}(x,t)}{\tau_p}
+\end{align*}
+Therefore, as $\overrightarrow{E} = 0$, the transport equation for $J_p$ is
+\begin{align*}
+	J_p &= J_{\text{diffusion}_p}\\
+	&= -q D_p \dpd{\hat{p}}{x}
+\end{align*}
+Therefore, solving
+\begin{align*}
+	0 &= -\frac{1}{q} \dpd{}{x}\left( -q D_p \dpd{\hat{p}}{x} \right) - \frac{\hat{p}}{\tau_p}\\
+	\therefore \dpd[2]{\hat{p}}{x} &= \frac{\hat{p}}{D_p \tau_p}
+\end{align*}
+Therefore,
+\begin{align*}
+	\dpd[2]{\hat{p}}{x} &= \frac{\hat{p}}{{L_p}^2}
+\end{align*}
+Therefore, as the sample is illuminated only at $x = 0$, for $0 < x < L$,
+\begin{align*}
+	G_{\text{optical}} &= 0
+\end{align*}
+and for $x = 0$,
+\begin{align*}
+	\hat{p}(0) &= G_{\text{optical}} \tau_p
+\end{align*}
+As there is an ohmic contact at $x = L$, there cannot be any charge accumulated there.\\
+Therefore,
+\begin{align*}
+	\hat{p}(L) &= 0
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\hat{p}(x) &= A e^{-\frac{x}{L_p}} + B e^{-\frac{x}{L_p}}
+\end{align*}
+Therefore, substituting the boundary conditions, and solving,
+\begin{align*}
+	\hat{p}(x) &= G_{\text{optical}} \tau_p e^{-\frac{x}{\tau_p}}
+\end{align*}
+If $L << L_p$, the recombination rate is negligible.
+Therefore,
+\begin{align*}
+	\hat{R} &= 0
+\end{align*}
+Therefore, the differential equation is
+\begin{align*}
+	\dpd[2]{\hat{p}}{x} &= 0
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{p}(x) &= A + B x
+\end{align*}
+Therefore, substituting the boundary conditions, and solving,
+\begin{align*}
+	\hat{p}(x) &= \hat{p}(0) \left( 1 - \frac{x}{L} \right)
+\end{align*}
+
+\begin{question}
+	An N-type semiconductor sample of Si at room temperature has the following properties.
+	\begin{align*}
+		N_d &= 10^{16} \si{\per\centi\metre\cubed}\\
+		G_{\text{optical}} &= 10^{19} \si{\per\centi\metre\cubed\per\second}\\
+		\tau_n &= 1 \si{\micro\second}\\
+		\tau_p &= 1 \si{\micro\second}\\
+		D_n &= 40 \si{\centi\metre\squared\per\second}\\
+		D_p &= 25 \si{\centi\metre\squared\per\second}\\
+		L &= 1 \si{\milli\meter}
+	\end{align*}
+	Determine whether the sample is short or long.
+\end{question}
+
+\begin{solution}
+	\begin{align*}
+		L_p &= \sqrt{D_p \tau_p}\\
+		&= \sqrt{\left( 25 \si{\centi\metre\squared\per\second} \right) \left( 10^{-6} \si{\second} \right)}\\
+		&= 5 \times 10^{-3} \si{\centi\metre}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		L &= 1 \si{\milli\meter}\\
+		&= 0.1 \si{\milli\meter}\\
+		&= 5 \times 10^2 L_p
+	\end{align*}
+	Therefore, the sample is long.
+\end{solution}
+
 \end{document}
