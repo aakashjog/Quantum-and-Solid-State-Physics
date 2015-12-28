@@ -261,7 +261,7 @@ E-mail: \href{mailto:asiasapi@gmail.com}{asiasapi@gmail.com}\\
 \begin{proof}
 	If $t = 0$,
 	\begin{align*}
-		\psi(x) & = A \cos(k x) \\
+		\psi(x) & = A \cos(k x)
 	\end{align*}
 	By the definition of wavelength,
 	\begin{align*}
@@ -282,9 +282,9 @@ E-mail: \href{mailto:asiasapi@gmail.com}{asiasapi@gmail.com}\\
 \begin{proof}
 	If $x = 0$,
 	\begin{align*}
-		\psi(t) = A \cos(\omega t) \\
+		\psi(t) = A \cos(\omega t)
 	\end{align*}
-	By the definition of wavelength,
+	By the definition of time period,
 	\begin{align*}
 		\psi(t)                     & = \psi(t + T)                         \\
 		\therefore A \cos(\omega t) & = A \cos\left( \omega (t + T) \right) \\
@@ -663,7 +663,7 @@ Classical particles are not affected by this factor on such a large scale, as th
 
 \begin{theorem}[Schrödinger Equation]
 	\begin{align*}
-		i \hbar \dpd{\psi(x,t)}{t} & = \left( -\frac{\hbar^2}{2 m} \dpd[2]{\psi(x,t)}{x} + V(x) \right) \psi(x,t)
+		i \hbar \dpd{\psi(x,t)}{t} & = -\frac{\hbar^2}{2 m} \dpd[2]{\psi(x,t)}{x} + V(x) \psi(x,t)
 	\end{align*}
 	\label{Schrodinger_Equation}
 \end{theorem}
@@ -718,7 +718,7 @@ Classical particles are not affected by this factor on such a large scale, as th
 		\end{align*}
 		where $\psi^*$ is the complex conjugate of of $\psi$,
 	\item
-		If $\psi_1(x,t)$ and $\psi_2(x,t)$ are solutions to the Schrödinger equation, then $\alpha \psi(x,t) + \beta \psi(x,t)$ is also a solution to the Schrödinger equation.
+		If $\psi_1(x,t)$ and $\psi_2(x,t)$ are solutions to the Schrödinger equation, then $\alpha \psi_1(x,t) + \beta \psi_2(x,t)$ is also a solution to the Schrödinger equation.
 \end{enumerate}
 
 \section{Properties of $\psi(x,t)$}
@@ -746,7 +746,7 @@ Classical particles are not affected by this factor on such a large scale, as th
 \begin{theorem}
 	The Schrödinger equation conserves normalization, i.e.,
 	\begin{align*}
-		\dod{}{t} \int\limits_{-\infty}^{\infty} \left| \psi(x,t) \right|^2 & = 0
+		\dod{}{t} \int\limits_{-\infty}^{\infty} \left| \psi(x,t) \right|^2 \dif x & = 0
 	\end{align*}
 \end{theorem}
 
@@ -758,7 +758,7 @@ Classical particles are not affected by this factor on such a large scale, as th
 	From the \nameref{Schrodinger_Equation},
 	\begin{align*}
 		\dpd{\psi}{t}              & = \frac{i \hbar}{2 m} \dpd[2]{\psi}{x} - \frac{i}{\hbar} V \psi \\
-		\therefore \dpd{\psi^*}{t} & = -\frac{i \hbar}{2 m} \dpd[2]{\psi^*}{x} + \frac{i}{\hbar} V \psi^*
+		\therefore \dpd{\psi^*}{t} & = -\frac{i \hbar}{2 m} \dpd[2]{\psi^*}{x} + \frac{i}{\hbar} V \psi^* \dif x
 	\end{align*}
 	Therefore,
 	\begin{align*}
@@ -791,8 +791,8 @@ This phenomenon is called the collapse of the wave function.
 \end{definition}
 
 \begin{definition}[Expected value]
-	The average value of the position, measured with the same wave function $\psi(x,t)$ and $N$ particles, is called the expected value.
-	It is denoted as $\langle x \rangle$.
+	The average value of an observable, measured with $N$ particles, with the same wave function $\psi(x,t)$, is called the expected value of the observable.
+	It is denoted as $\langle \alpha \rangle$, where $\alpha$ is the observable.
 \end{definition}
 
 \begin{theorem}[Ehrenfest's Theorem]
@@ -908,6 +908,10 @@ This phenomenon is called the collapse of the wave function.
 					As the function is even, the integral from $-\infty$ to $\infty$ is twice that of the integral from $0$ to $\infty$.
 				} \\
                                    & = 2 A^2 \int\limits_{0}^{\infty} e^{-2 a \frac{m x^2}{\hbar}} \dif x                                                                        \\
+				   \marginnote
+				   {
+					   $\int\limits_{-\infty}^{\infty} e^{-b x^2} \dif x = \frac{1}{2} \left( \frac{\pi}{b} \right)^2$
+				   }                                              \\
                                    & = 2 A^2 \left( \frac{1}{2} \left( \frac{\pi \hbar}{2 a m} \right)^{\frac{1}{2}} \right)                                                     \\
                                    & = A ^2 \left( \frac{\pi \hbar}{2 a m} \right)^{\frac{1}{2}}
 			\end{align*}
@@ -1122,7 +1126,7 @@ where
 \end{align*}
 is the standard deviation of the position of the particle, and
 \begin{align*}
-	\sigma_x &= \sqrt{\left\langle x^2 \right\rangle - {\langle x \rangle}^2}
+	\sigma_p &= \sqrt{\left\langle p^2 \right\rangle - {\langle p \rangle}^2}
 \end{align*}
 is the standard deviation of the momentum of the particle.
 
@@ -3102,7 +3106,7 @@ Also,
 \end{align*}
 Therefore, substituting and solving,
 \begin{align*}
-	\langle V \rangle V &= \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)\\
+	\langle V \rangle &= \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)\\
 	&= \frac{E_n}{2}
 \end{align*}
 
