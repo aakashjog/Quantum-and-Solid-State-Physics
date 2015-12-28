@@ -3056,6 +3056,37 @@ Similarly,
 \begin{align*}
 	d_n &= \sqrt{n}
 \end{align*}
+Therefore,
+\begin{align*}
+	\hat{a}_+ \psi_n &= \sqrt{n + 1} \psi_{n + 1}\\
+	\hat{a}_- \psi_n &= \sqrt{n} \psi_{n - 1}
+\end{align*}
+Therefore,
+\begin{align*}
+	\psi_{n + 1} &= \frac{1}{\sqrt{n + 1}} \hat{a}_+ \psi_n\\
+	&= \frac{1}{\sqrt{n - 1}} \hat{a}_+ \left( \frac{1}{\sqrt{n}} \hat{a}_+ \psi_{n - 1} \right)\\
+	&= \frac{1}{\sqrt{n - 1}} \frac{1}{\sqrt{n}} \hat{a}_+ \hat{a}_+ \psi_{n - 1}\\
+	&= \frac{1}{\sqrt{n}} \frac{1}{\sqrt{n - 1}} \left( \hat{a}_+ \right)^2 \psi_{n - 1}\\
+	&\vdots\\
+	&= \frac{1}{\sqrt{n!}} \left( \hat{a}_+ \right)^n \psi_0
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\psi_n(x) &= \left( \frac{m \omega}{h \pi} \right)^{\frac{1}{4}} \frac{1}{\sqrt{2^n n!}} e^{-\frac{m \omega x^2}{2 \hbar}} H_n \left( \sqrt{\frac{m \omega}{\hbar} x} \right)
+\end{align*}
+where $H_i$ are the Hermite polynomials, which are given by
+\begin{align*}
+	H_n(x) &= (-1)^n e^{x^2} \dod[n]{}{x} e^{-x^2}
+\end{align*}
+Therefore,
+\begin{align*}
+	H_0 &= 1\\
+	H_1 &= 2 x\\
+	H_2 &= 4 x^2 - 2\\
+	H_3 &= 8 x^3 - 12 x\\
+	H_4 &= 16 x^4 - 48 x^2 + 12\\
+	&\vdots
+\end{align*}
 
 \subsection{Potential Energy}
 
@@ -3074,6 +3105,368 @@ Therefore, substituting and solving,
 	\langle V \rangle V &= \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)\\
 	&= \frac{E_n}{2}
 \end{align*}
+
+\begin{question}
+	Consider a quantum harmonic oscillator with
+	\begin{align*}
+		V(x) &= \frac{1}{2} m \omega^2 x^2
+	\end{align*}
+	Assume
+	\begin{align*}
+		\psi(x,0) &= \frac{1}{\sqrt{2}} \left( \psi_0(x) + i \psi_1(x) \right)
+	\end{align*}
+	\begin{enumerate}
+		\item
+			At $t = 0$, what is the probability of measuring the energy to be $\frac{3}{2} \hbar \omega$?
+		\item
+			At $t = 0$, what is the probability of measuring the energy to be $\frac{11}{2} \hbar \omega$?
+		\item
+			At $t = 0$, the energy is measured and found to be the maximum possible value.
+			What is the state of the system after measurement?
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			\begin{align*}
+				E_n &= \hbar \omega \left( n + \frac{1}{2} \right)
+			\end{align*}
+			Therefore, if
+			\begin{align*}
+				E &= \frac{3}{2} \hbar \omega
+			\end{align*}
+			then $n = 1$.\\
+			Therefore, the probability of measuring the given energy is the probability of $n$ being $1$.\\
+			Therefore,
+			\begin{align*}
+				P\left( E = \frac{3}{2} \hbar \omega \right) &= |c_2|^2\\
+				&= \left| \frac{i}{\sqrt{2}} \right|^2\\
+				&= \frac{1}{2}
+			\end{align*}
+		\item
+			\begin{align*}
+				E_n &= \hbar \omega \left( n + \frac{1}{2} \right)
+			\end{align*}
+			Therefore, if
+			\begin{align*}
+				E &= \frac{11}{2} \hbar \omega
+			\end{align*}
+			then $n = 5$.\\
+			As the wave function at $t = 0$ is a combination of $\psi_0$ and $\psi_1$ only, the probability of $n$ being $5$, and hence the probability of measuring the given energy is $0$.
+		\item
+			As the energy is measured to be the maximum possible, i.e. $E_1$, the wave function collapses to $\psi_1(x)$.
+	\end{enumerate}
+\end{solution}
+
+\begin{question}
+	Consider a quantum particle of mass $m$ in the potential
+	\begin{align*}
+		V(x) &=
+			\begin{cases}
+				\infty &;\quad x < 0\\
+				\frac{1}{2} m \omega^2 x^2 &;\quad x > 0\\
+			\end{cases}
+	\end{align*}
+	Find the allowed energies of the particles.
+\end{question}
+
+\begin{solution}
+	If $x < 0$, $V(x) = \infty$.\\
+	Therefore,
+	\begin{align*}
+		\psi(x) &= 0
+	\end{align*}
+	If $x > 0$, the wave function is that for a quantum harmonic oscillator.\\
+	Therefore,
+	\begin{align*}
+		\psi(x) &= \left( \frac{m \omega}{\hbar \pi} \right)^{\frac{1}{4}} \frac{1}{\sqrt{2^n n!}} e^{-\frac{m \omega x^2}{2 \hbar}} H_n \left( \sqrt{\frac{m \omega}{\hbar}} x \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi(x) &=
+			\begin{cases}
+				0 :\quad x < 0\\
+				\left( \frac{m \omega}{\hbar \pi} \right)^{\frac{1}{4}} \frac{1}{\sqrt{2^n n!}} e^{-\frac{m \omega x^2}{2 \hbar}} H_n \left( \sqrt{\frac{m \omega}{\hbar}} x \right) &;\quad x > 0\\
+			\end{cases}
+	\end{align*}
+	For $\psi$ to be continuous,
+	\begin{align*}
+		\psi(0) &= 0
+	\end{align*}
+	Therefore, solving, the boundary conditions are satisfied by odd $n$ only.\\
+	Therefore,
+	\begin{align*}
+		E_n &= \hbar w \left( n + \frac{1}{2} \right)
+	\end{align*}
+	Therefore, the spacing between the energy levels is $2 \hbar \omega$
+\end{solution}
+
+\section{3D Harmonic Oscillator}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l l l}
+		\toprule
+		1D Schrödinger Equation & 3D Schrödinger Equation\\
+		\midrule
+		$\displaystyle \psi(x,t)$ & $\displaystyle \psi(x,y,z,t)$\\
+		$\displaystyle \int\limits_{-\infty}^{\infty} |\psi|^2 \dif x = 1$ & $\displaystyle \iiint\limits_{-\infty}^{\infty} |\psi|^2 \dif x \dif y \dif z = 1$\\
+		$\displaystyle \hat{H} = \frac{{\hat{p}_x}^2}{2 m} + V(x)$ & $\displaystyle \hat{H} = \frac{{\hat{p}_x}^2 + {\hat{p}_y}^2 + {\hat{p}_z}^2}{2 m} + V(x,y,z)$\\
+		$\displaystyle \hat{H} = -\frac{i \hbar}{m} \left( \dpd[2]{}{x} + \dpd[2]{}{y} + \dpd[2]{}{z} \right) + V(x,y,z)$ & $\displaystyle \hat{H} = -\frac{i \hbar}{m} \left( \dpd[2]{}{x} \right) + V(x,y,z)$\\
+		$\Psi(x,t) = \psi(x) \varphi(t)$ & $\Psi(x,y,z,t) = \psi(x,y,z) \varphi(t)$\\
+		$\varphi(t) = e^{-\frac{i E t}{\hbar}}$ & $\varphi(t) = e^{-\frac{i E t}{\hbar}}$\\
+		$\Psi(x,t) = \sum c_n \psi_n(x) e^{-\frac{i E t}{\hbar}}$ & $\Psi(x,y,z,t) = \sum c_n \psi_n(x,y,z) e^{-\frac{i E t}{\hbar}}$\\
+		\bottomrule
+	\end{tabular}
+	\caption{Comparison of 1D and 3D Schrödinger Equations}
+	\label{tab:Comparison_of_1D_and_3D_Schrodinger_Equations}
+\end{table}
+
+The Hamiltonian operator in 3D is
+\begin{align*}
+	\hat{H} &= -\frac{\hbar^2}{2 m} \left( \dpd[2]{}{x} + \dpd[2]{}{y} + \dpd[2]{}{z} \right) + \frac{1}{2} m \omega^2 \left( x^2 + y^2 + z^2 \right)
+\end{align*}
+Let $E$ be the eigenvalue of $\hat{H}$ corresponding to $\psi(x,y,z)$.\\
+Therefore,
+\begin{align*}
+	\hat{H} \psi(x,y,z) &= E \psi(x,y,z)
+\end{align*}
+Separating the variables, let
+\begin{align*}
+	\psi(x,y,z) &= \psi_x(x) \psi_y(y) \psi_z(z)
+\end{align*}
+Therefore,
+\begin{align*}
+	\left( -\frac{\hbar}{2 m} \dpd[2]{}{x} + \frac{1}{2} m \omega^2 x^2 \right) \psi_x(x) &= E_n \psi_x(x)\\
+	\left( -\frac{\hbar}{2 m} \dpd[2]{}{y} + \frac{1}{2} m \omega^2 y^2 \right) \psi_y(y) &= E_m \psi_y(y)\\
+	\left( -\frac{\hbar}{2 m} \dpd[2]{}{z} + \frac{1}{2} m \omega^2 z^2 \right) \psi_z(z) &= E_l \psi_z(z)
+\end{align*}
+Therefore,
+\begin{align*}
+	E &= E_n + E_m + E_l\\
+	&= \frac{3}{2} \hbar \omega + \hbar \omega (n + m + l)
+\end{align*}
+
+\begin{question}
+	Consider a single particle in a 3D infinite well of side $a$, which is equivalent to a single particle in a box of side $a$, cornered at $(0,0,0)$.
+	The potential is given by
+	\begin{align*}
+		V(x,y,z) &=
+			\begin{cases}
+				0 &;\quad \text{inside the box}\\
+				\infty &;\quad \text{outside the box}\\
+			\end{cases}
+	\end{align*}
+	Find the wave function of the particle.
+\end{question}
+
+\begin{solution}
+	As the potential outside the box is infinite, for any point outside the box,
+	\begin{align*}
+		\psi(x) &= 0
+	\end{align*}
+	For a point inside the box,
+	\begin{align*}
+		\hat{H} &= -\frac{\hbar^2}{2 m} \left( \dpd[2]{}{x} + \dpd[2]{}{y} + \dpd[2]{}{z} \right)
+	\end{align*}
+	Let $E$ be the eigenvalue of $\hat{H}$ corresponding to $\psi(x,y,z)$.
+	Therefore,
+	\begin{align*}
+		\hat{H} \psi(x,y,z) &= E \psi(x,y,z)
+	\end{align*}
+	Therefore, separating the variables,
+	\begin{align*}
+		\psi(x,y,z) &= \psi_x(x) \psi_y(y) \psi_z(z)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\hat{H} \psi(x,y,z) &= E \psi(x,y,z)\\
+		\therefore \hat{H} \left( \psi_x(x) \psi_y(y) \psi_z(z) \right) &= E \psi_x(x) \psi_y(y) \psi_z(z)\\
+		\therefore -\frac{\hbar^2}{2 m} \left( {\psi_x}'' \psi_y \psi_z + \psi_x {\psi_y}'' \psi_z + \psi_x \psi_y {\psi_z}'' \right) &= E \psi_x \psi_y \psi_z\\
+		\therefore \frac{{\psi_x}''}{\psi_x} + \frac{{\psi_y}''}{\psi_y} + \frac{{\psi_z}''}{\psi_z} &= -\frac{2 m E}{\hbar^2}
+	\end{align*}
+	Let
+	\begin{align*}
+		k_x &= \sqrt{-\frac{{\psi_x}''}{\psi_x}}\\
+		k_y &= \sqrt{-\frac{{\psi_y}''}{\psi_y}}\\
+		k_z &= \sqrt{-\frac{{\psi_z}''}{\psi_z}}\\
+		k &= \sqrt{\frac{2 m E}{\hbar^2}}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		{k_x}^2 + {k_y}^2 + {k_z}^2 &= k^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi_x(x) &= A \sin(k_x x) + B \cos(k_x x)\\
+		\psi_y(y) &= C \sin(k_y y) + D \cos(k_y y)\\
+		\psi_z(z) &= F \sin(k_z z) + G \cos(k_z z)
+	\end{align*}
+	Therefore, as $\psi$ is continuous at $(0,0,0)$, solving,
+	\begin{align*}
+		B &= 0\\
+		D &= 0\\
+		G &= 0\\
+		k_x a &= n_x \pi\\
+		k_y a &= n_y \pi\\
+		k_z a &= n_z \pi\\
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi_x(x) &= A \sin(k_x x)\\
+		\psi_y(y) &= C \sin(k_y y)\\
+		\psi_z(z) &= F \sin(k_z z)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi(x,y,z) &= N \sin\left( \frac{n_x \pi}{a} x \right) + \sin\left( \frac{n_y \pi}{a} y \right) + \sin\left( \frac{n_z \pi}{a} z \right)
+	\end{align*}
+	Therefore, normalizing,
+	\begin{align*}
+		\int\limits_{-\infty}^{\infty} |\psi|^2 \dif x \dif y \dif z &= 1
+	\end{align*}
+	Therefore, solving,
+	\begin{align*}
+		N &= \left( \sqrt{\frac{2}{a}} \right)^3
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E &= \frac{k^2 \hbar^2}{2 m}\\
+		&= \frac{\left( {k_x}^2 + {k_y}^2 + {k_z}^2 \right) \hbar^2}{2 m}\\
+		&= \frac{\left( \left( \frac{n_x \pi}{a} \right)^2 + \left( \frac{n_y \pi}{a} \right)^2 + \left( \frac{n_z \pi}{a} \right)^2 \right) \hbar^2}{2 m}
+	\end{align*}
+	Therefore, there is degeneracy in the energies, i.e., for different combinations of $n_x$, $n_y$, $n_z$, there exist different wave functions with same energy.
+\end{solution}
+
+
+\section{Angular Momentum}
+
+\begin{definition}[Angular momentum operators]
+	The angular momentum operators in the $x$, $y$, $z$ directions are defined as
+	\begin{align*}
+		\hat{L}_x &= \hat{y} \hat{p}_z - \hat{z} \hat{p}_y\\
+		\hat{L}_y &= \hat{z} \hat{p}_x - \hat{x} \hat{p}_z\\
+		\hat{L}_z &= \hat{x} \hat{p}_y - \hat{y} \hat{p}_x
+	\end{align*}
+	where $\hat{x}$, $\hat{y}$, $\hat{z}$ are the position operators in the $x$, $y$, $z$ directions respectively, and $\hat{p}_x$, $\hat{p}_y$, $\hat{p}_z$ are the momentum operators in the $x$, $y$, $z$ directions respectively.
+\end{definition}
+
+\section{Commutation Relations for 3D Operators}
+
+\begin{theorem}
+	\begin{align*}
+		\left[ \hat{i},\hat{j} \right] &= i \hbar \delta_{i j}\\
+		\left[ \hat{p}_i,\hat{p}_j \right] &= 0\\
+		\left[ \hat{i},\hat{p}_i \right] &= 0
+	\end{align*}
+	where $i$, $j$ can be $x$, $y$, $z$.
+\end{theorem}
+
+\subsection{Angular Momentum Operators in Orthogonal Directions}
+
+\begin{align*}
+	\left[ \hat{L}_x,\hat{L}_y \right] &= \left( \hat{y} \hat{p}_z - \hat{z} \hat{p}_y \right) \left( \hat{z} \hat{p}_x - \hat{x} \hat{p}_x \right) - \left( \hat{z} \hat{p}_x - \hat{x} \hat{p}_z \right) \left( \hat{y} \hat{p}_z - \hat{z} \hat{p}_y \right)\\
+	&= \quad \underbrace{\hat{y} \hat{p}_z \hat{z} \hat{p}_x}_{1} - \underbrace{\hat{y} \hat{p}_z \hat{x} \hat{p}_z}_{2} - \underbrace{\hat{z} \hat{p}_y \hat{z} \hat{p}_x}_{3} + \underbrace{\hat{z} \hat{p}_y \hat{x} \hat{p}_z}_{4}\\
+	&\quad - \underbrace{\hat{z} \hat{p}_x \hat{y} \hat{p}_z}_{5} + \underbrace{\hat{z} \hat{p}_x \hat{z} \hat{p}_y}_{6} + \underbrace{\hat{x} \hat{p}_z \hat{y} \hat{p}_z}_{7} - \underbrace{\hat{x} \hat{p}_z \hat{z} \hat{p}_y}_{8}
+\end{align*}
+Therefore, term $2$ is
+\begin{align*}
+	\hat{y} \hat{p}_z \hat{x} \hat{p}_z &= \hat{y} \hat{x} \hat{p}_z \hat{p}_z
+	\marginnote
+	{
+		$\left[ \hat{x},\hat{p}_z \right] = 0$
+	}\\
+	&= x y p_z p_x
+	\marginnote
+	{
+		$\left[ \hat{y},\hat{x} \right] = 0$
+	}\\
+	&= x p_z y p_z
+	\marginnote
+	{
+		$\left[ \hat{y},\hat{p}_z \right] = 0$
+	}
+\end{align*}
+Therefore, term $2$ is equal to term $7$.\\
+similarly, solving,
+\begin{align*}
+	\left[ \hat{L}_x,\hat{L}_y \right] &= i \hbar \hat{L}_z\\
+	\left[ \hat{L}_y,\hat{L}_z \right] &= i \hbar \hat{L}_x\\
+	\left[ \hat{L}_z,\hat{L}_x \right] &= i \hbar \hat{L}_y
+\end{align*}
+
+\subsection{Angular Momentum Operators and Square of Angular Momentum Operator}
+
+\begin{align*}
+	\left[ \hat{L}^2, \hat{L}_x \right] &= \left[ {\hat{L}_x}^2 + {\hat{L}_y}^2 + {\hat{L}_z}^2 , \hat{L}_x \right]\\
+	&= {\hat{L}_x}^3 + \hat{L}_y \hat{L}_y \hat{L}_x + \hat{L}_z \hat{L}_z \hat{L}_x - {\hat{L}_x}^3 - \hat{L}_x \hat{L}_y \hat{L}_y - \hat{L}_x \hat{L}_z \hat{L}_z
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{L}_y \hat{L}_y \hat{L}_x &= -i \hbar \hat{L}_y \hat{L}_z + \hat{L}_y \hat{L}_x \hat{L}_y
+	\marginnote
+	{
+		$\hat{L}_y \hat{L}_x = \left[ \hat{L}_y,\hat{L}_x \right] + \hat{L}_x \hat{L}_y = -i \hbar \hat{L}_z + \hat{L}_x \hat{L}_y$
+	}\\
+	&= -i \hbar \hat{L}_y \hat{L}_z - i \hbar \hat{L}_z \hat{L}_y + \hat{L}_x \hat{L}_y \hat{L}_y
+\end{align*}
+Similarly,
+\begin{align*}
+	\hat{L}_z \hat{L}_z \hat{L}_x &= i \hbar \hat{L}_z \hat{L}_y + i \hbar \hat{L}_y \hat{L}_z + \hat{L}_x \hat{L}_z \hat{L}_z
+\end{align*}
+Therefore, substituting and solving,
+\begin{align*}
+	\left[ \hat{L}^2,\hat{L}_x \right] &= 0
+\end{align*}
+Similarly,
+\begin{align*}
+	\left[ \hat{L}^2,\hat{L}_y \right] &= 0\\
+	\left[ \hat{L}^2,\hat{L}_z \right] &= 0
+\end{align*}
+Therefore, as the commutation relations are zeros, the operators have common eigenfunctions.\\
+Let $Y_{l m}$ be an eigenfunction of the momentum operator $\hat{L}_z$.\\
+Therefore,
+\begin{align*}
+	\hat{L}_z Y_{l m} &= m \hbar Y_{l m}\\
+	\hat{L}^2 Y_{l m} &= l (l + 1) \hbar^2 Y_{l m}
+\end{align*}
+where $m$ and $l$ are real constants.\\
+Let
+\begin{align*}
+	\hat{L}_+ &= \hat{L}_x + i \hat{L}_y\\
+	\hat{L}_- &= \hat{L}_x - i \hat{L}_y
+\end{align*}
+be two operators.\\
+Therefore, the commutation relations on $\hat{L}_+$ and $\hat{L}_-$ are
+\begin{align*}
+	\left[ \hat{L}_z,\hat{L}_- \right] &= \hbar \hat{L}_+\\
+	\left[ \hat{L}_z,\hat{L}_- \right] &= -\hbar \hat{L}_-\\
+	\left[ \hat{L}^2,\hat{L}_+ \right] &= 0\\
+	\left[ \hat{L}^2,\hat{L}_- \right] &= 0
+\end{align*}
+
+\subsection{Effect of $\hat{L}_{\pm}$ on $Y_{l m}$}
+
+\begin{align*}
+	\hat{L}_z \hat{L}_+ Y_{l m} &= \left( \hbar \hat{L}_+ + \hat{L}_+ \hat{L}_z \right) Y_{l m}
+	\marginnote
+	{
+		$\hat{L}_z \hat{L}_+ = \left[ \hat{L}_z,\hat{L}_+ \right] + \hat{L}_+ \hat{L}_z = \hbar \hat{L}_+ + \hat{L}_+ \hat{L}_z$
+	}\\
+	&= \hbar (m + 1) \hat{L}_+ Y_{l m}
+	\marginnote
+	{
+		$\hat{L}_z Y_{l m} = m \hbar + Y_{l m}$
+	}
+\end{align*}
+Therefore, $\hat{L}_+ Y_{l m}$ is also an eigenfunction of $\hat{L}_z$, with eigenvalue $\hbar (m + 1)$.\\
+Similarly,
+\begin{align*}
+	\hat{L}^2 \hat{L}_+ Y_{l m} &= \hat{L}_+ \hat{L}^2 Y_{l m}\\
+	&= \hbar^2 l (l + 1) \hat{L}_+ Y_{l m}
+\end{align*}
+Therefore, $\hat{L}_+ Y_{l m}$ is also an eigenfunction of $\hat{L}^2$, but with the same eigenvalue, $\hbar^2 l (l + 1)$.
 
 \newpage
 \part{Solid State Physics}
