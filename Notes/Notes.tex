@@ -6183,4 +6183,153 @@ Therefore, substituting the boundary conditions, and solving,
 	Therefore, the sample is long.
 \end{solution}
 
+\begin{question}
+	Consider a N-type sample of Si at $300 \kelvin$.
+	Assuming low level injection, let the part of the sample from $x = -L_1$ to $x = 0$ be exposed to light, and let the part from $x = 0$ to $x = L_2$ be masked to block light.
+	Assuming $L_1 >> L_p$ and $L_2 >> L_p$, find $\hat{p}(x)$.
+\end{question}
+
+\begin{solution}
+	If the unmasked part was absent, $\hat{p}(x)$ would be
+	\begin{align*}
+		\hat{p}(x) &= G_{\text{optical}} \tau_p e^{-\frac{x}{L_p}}
+	\end{align*}
+	If the masked part was absent, $\hat{p}(x)$ would be
+	\begin{align*}
+		\hat{p}(x) &= G_{\text{optical}} \tau_p
+	\end{align*}
+	However, as the concentration must be continuous and differentiable, the graph of $\hat{p}(x)$ must be smooth.\\
+	By the steady state diffusion equation, on the illuminated part,
+	\begin{align*}
+		0 &= \dpd{\hat{p}}{x}\\
+		&= -\frac{1}{q} \dpd{J_p}{x} + \left( G_{\text{optical}} - \frac{\hat{p}}{\tau_p} \right)
+	\end{align*}
+	As $\overrightarrow{E} = 0$, $J_p = J_{\text{diffusion}_p}$.
+	Therefore, by the Transport Equations, 
+	\begin{align*}
+		J_{\text{diffusion}_p} &= -q D_p \dpd{\hat{p}}{x}
+	\end{align*}
+	Therefore, substituting,
+	\begin{align*}
+		0 &= -\frac{1}{q} \dpd{J_{\text{diffusion}_p}}{x} + \left( G_{\text{optical}} - \frac{\hat{p}}{\tau_p} \right)\\
+		\therefore D_p \dod[2]{\hat{p}}{x} - \frac{\hat{p}}{\tau_p} &= -G_{\text{optical}}\\
+		\therefore \dod[2]{\hat{p}}{x} - \frac{\hat{p}}{D_p \tau_p} &= -\frac{G_{\text{optical}}}{D_p}\\
+		\therefore \dod[2]{\hat{p}}{x} - \frac{\hat{p}}{{L_p}^2} &= -\frac{G_{\text{optical}}}{D_p}
+	\end{align*}
+	Therefore, for the illuminated part,
+	\begin{align*}
+		\hat{p}(x) &= C e^{-\frac{x}{L_p}} + D e^{\frac{x}{L_p}} + G_{\text{optical}} \tau_p
+	\end{align*}
+	Similarly, for the masked part, as $G_{\text{optical}} = 0$,
+	\begin{align*}
+		\hat{p}(x) &= A e^{-\frac{x}{L_p}} + B e^{\frac{x}{L_p}}
+	\end{align*}
+	As the end of the masked part, the concentration must be as if the illuminated part is absent.
+	Therefore, the concentration must be zero.\\
+	Therefore,
+	\begin{align*}
+		\hat{p}(L_2) &= 0\\
+		\therefore A e^{-\frac{L_2}{L_p}} + B e^{\frac{L_2}{L_p}} &= 0
+	\end{align*}
+	As $L_2 >> L_p$,
+	\begin{align*}
+		A e^{-\frac{L_2}{L_p}} &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		0 + B e^{\frac{L_2}{L_0}} &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		B &= 0
+	\end{align*}
+	At the end of the illuminated part, the concentration must be as if the masked part is absent.
+	Therefore, the concentration must be $G_{\text{optical}} \tau_p$.\\
+	Therefore,
+	\begin{align*}
+		\hat{p}(-L_1) &= G_{\text{optical}} \tau_p\\
+		\therefore C e^{\frac{L_1}{L_p}} + D e_{-\frac{L_1}{L_p}} + G_{\text{optical}} \tau_p &= G_{\text{optical}} \tau_p
+	\end{align*}
+	As $L_1 >> L_p$,
+	\begin{align*}
+		D e^{-\frac{L_1}{L_p}} &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		C e^{\frac{L_1}{L_p}} + 0 + G_{\text{optical}} \tau_p &= G_{\text{optical}} \tau_p
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		C &= 0
+	\end{align*}
+	At the junction of the two parts, the concentration must be continuous.\\
+	Therefore,
+	\begin{align*}
+		\hat{p}(0^+) &= \hat{p}(0^-)\\
+		\therefore A e^{-\frac{0}{L_p}} &= D e^{\frac{0}{L_p}} + G_{\text{optical}} \tau_p\\
+		\therefore A &= D + G_{\text{optical}} \tau_p
+	\end{align*}
+	At the junction of the two parts, the diffusion current is continuous.
+	Hence, the derivative of the concentration must be continuous.\\
+	Therefore,
+	\begin{align*}
+		\hat{p}'(0^+) &= \hat{p}'(0^-)\\
+		\therefore -\frac{A e^{-\frac{0}{L_p}}}{L_p} &= \frac{D e^{\frac{0}{L_p}}}{L_p}\\
+		\therefore -\frac{A}{L_p} &= \frac{D}{L_p}\\
+		\therefore A &= -D
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		A &= D + G_{\text{optical}} \tau_p\\
+		\therefore A &= -A + G_{\text{optical}} \tau_p
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\therefore A &= \frac{1}{2} G_{\text{optical}} \tau_p\\
+		\therefore D &= -\frac{1}{2} G_{\text{optical}} \tau_p\\
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\hat{p}(x) &=
+			\begin{cases}
+				G_{\text{optical}} \tau_p \left( 1 - \frac{1}{2} e^{\frac{x}{L_p}} \right)\\
+				-\frac{1}{2} G_{\text{optical}} \tau_p e^{-\frac{x}{L_p}} + G_{\text{optical}} \tau_p &;\quad x > 0\\
+			\end{cases}
+	\end{align*}
+	Therefore, the graph is
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\textwidth]{fig-carrier_concentration_for_partly_illuminated_long_semiconductor.pdf}
+	\end{figure}
+\end{solution}
+
+	Consider a N-type semiconductor sample which is masked everywhere, except for a narrow slit at $x = 0$.
+	A pulse of light is shined at $t = 0$.
+
+\section{Haynes-Shockley Experiment}
+
+A N-type semiconductor sample, of length $L$, is masked everywhere, except for a narrow slit at $x = 0$.
+A pulse of light is shined at $t = 0$.
+If there is no electric field acting on the semiconductor, the concentration of holes is as in Figure \ref{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_without_Electric_Field}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{fig-pulse_of_light_without_electric_field.pdf}
+	\caption{Concentration of Holes Generated due to a Pulse of Light, without Electric Field}
+	\label{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_without_Electric_Field}
+\end{figure}
+If there is an electric field $\overrightarrow{E}$ acting on the semiconductor, acting towards the right, the concentration of holes is as in Figure \ref{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_with_Electric_Field}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{fig-pulse_of_light_with_electric_field.pdf}
+	\caption{Concentration of Holes Generated due to a Pulse of Light, without Electric Field}
+	\label{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_with_Electric_Field}
+\end{figure}
+Therefore, the effect of the pulse can be felt at the end, such that
+\begin{align*}
+	V_{\text{drift}} &= \frac{L}{t_d}\\
+	\mu_p &= \frac{V_{\text{drift}}}{E}\\
+	&= \frac{L}{E t_d}
+\end{align*}
+Therefore, the properties of minority carriers can be experimentally measured, using this technique.
+
 \end{document}
