@@ -55,6 +55,7 @@
 \usepackage{multirow}
 \usepackage{titlesec}
 \usepackage{todonotes}
+\usepackage{placeins}
 \usepackage{ifdraft}
 	\ifoptiondraft
 	{%
@@ -84,6 +85,30 @@
 \makeatletter
 \@addtoreset{section}{part} %resets section numbers in new part
 \makeatother
+
+\let\Oldpart\part
+\renewcommand{\part}{\FloatBarrier\Oldpart}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+\let\Oldquestion\question
+\renewcommand{\question}{\FloatBarrier\Oldquestion}
+
+\let\Oldsolution\solution
+\renewcommand{\solution}{\FloatBarrier\Oldsolution}
+
+\let\Oldtheorem\theorem
+\renewcommand{\theorem}{\FloatBarrier\Oldtheorem}
+
+\let\Olddefinition\definition
+\renewcommand{\definition}{\FloatBarrier\Olddefinition}
 
 \newcommand\blfootnote[1]{%
 	\begingroup
