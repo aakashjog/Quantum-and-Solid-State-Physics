@@ -3368,7 +3368,6 @@ Therefore,
 	Therefore, there is degeneracy in the energies, i.e., for different combinations of $n_x$, $n_y$, $n_z$, there exist different wave functions with same energy.
 \end{solution}
 
-
 \section{Angular Momentum}
 
 \begin{definition}[Angular momentum operators]
@@ -3496,6 +3495,280 @@ Similarly,
 	&= \hbar^2 l (l + 1) \hat{L}_+ Y_{l m}
 \end{align*}
 Therefore, $\hat{L}_+ Y_{l m}$ is also an eigenfunction of $\hat{L}^2$, but with the same eigenvalue, $\hbar^2 l (l + 1)$.
+
+\subsection{Ladder of $\hat{L}_z$}
+
+The eigenvalues of $\hat{L}_z$ are separated by $\hbar$.
+Therefore, the eigenvalues form a ladder similar to that of the quantum harmonic oscillator, in Figure \ref{fig:Energy_Level_Ladder_for_Quantum_Harmonic_Oscillator}.\\
+As $L_z$ is a component of the angular momentum, its magnitude must be less than or equal to that of the total angular momentum.
+Hence, this ladder is bounded both at the top and the bottom.
+Therefore, for the maximum value of $m$,
+\begin{align*}
+	\hat{L}_+ Y_{l m} &= 0
+\end{align*}
+Therefore,
+\begin{align*}
+	0 &= \hat{L}_- \hat{L}_+ Y_{l m}\\
+	&= \left( \hat{L}_x - i \hat{L}_y \right) \left( \hat{L}_x + i \hat{L}_y \right) Y_{l m}\\
+	&= \left( {\hat{L}_x}^2 + i \hat{L}_x \hat{L}_y - i \hat{L}_y \hat{L}_x + {\hat{L}_y}^2 \right) Y_{l m}\\
+	&= \left( {\hat{L}_x}^2 + {\hat{L}_y}^2 + i \left[ \hat{L}_x,\hat{L}_y \right] \right) Y_{l m}\\
+	&= \left( {\hat{L}_x}^2 + {\hat{L}_y}^2 - \hbar \hat{L}_z \right) Y_{l m}\\
+	&= \left( \hat{L}^2 - {\hat{L}_z}^2 - \hbar \hat{L}_z \right) Y_{l m}\\
+	&= \left( \hbar^2 l (l + 1) - \hbar^2 m^2 - \hbar^2 m \right) Y_{l m}\\
+	&= \left( \hbar^2 l (l + 1) - \hbar^2 m (m + 1) \right) Y_{l m}
+\end{align*}
+Therefore,
+\begin{align*}
+	\hbar l (l + 1) - \hbar m (m + 1) &= 0\\
+	\therefore m_{\text{max}} &= l
+\end{align*}
+Therefore, each $l_i$ has a ladder, with first step $-l_i \hbar$, last step $l_i \hbar$, and step $\hbar$ corresponding to it.\\
+Let the number of steps in each ladder be $N$.
+Therefore,
+\begin{align*}
+	N &= 2 l + 1
+\end{align*}
+Therefore, $l$ can be expressed as
+\begin{align*}
+	l &= \frac{N - 1}{2}
+\end{align*}
+where $N \in \mathbb{N}$.\\
+Therefore, the ladder corresponding to $l = 0$ has one step, with $m = 0$, the ladder corresponding to $l = \frac{1}{2}$ has two steps, with $m = -\frac{1}{2}$ and $m = \frac{1}{2}$, and so on.
+
+\section{Angular Momentum in Spherical Coordinates}
+
+In spherical coordinates,
+\begin{align*}
+	x &= r \sin \theta \cos \varphi\\
+	y &= r \sin \theta \sin \varphi\\
+	z &= r \cos \theta
+\end{align*}
+where $\theta \in [0,\pi]$, $\varphi \in [0,2 \pi)$, $r > 0$.\\
+Therefore,
+\begin{align*}
+	r &= \sqrt{x^2 + y^2 + z^2}\\
+	\theta &= \cos^{-1}\left( \frac{z}{\sqrt{x^2 + y^2 + z^2}} \right)\\
+	\varphi &= \tan^{-1}\left( \frac{y}{x} \right)
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{L}_x &= \frac{\hbar}{i} \left( -\sin \varphi \dpd{}{\theta} - \frac{\cos \varphi}{\tan \theta} \dpd{}{\varphi} \right)\\
+	\hat{L}_y &= \frac{\hbar}{i} \left( \cos \varphi \dpd{}{\theta} - \frac{\sin \varphi}{\tan \theta} \dpd{}{\varphi} \right)\\
+	\hat{L}_z &= \frac{\hbar}{i} \dpd{}{\varphi}\\
+	\hat{L}^2 &= -\hbar^2 \left( \frac{1}{\sin \theta} \dpd{}{\theta}\left( \sin \theta \dpd{}{\theta} \right) + \frac{1}{\sin^2 \theta} \dpd[2]{}{\varphi} \right)\\
+	\hat{L}_{\pm} &= \pm \hbar e^{\pm i \varphi} \left( \dpd{}{\theta} \pm i \cot \theta \dpd{}{\varphi} \right)
+\end{align*}
+Normalizing in spherical coordinates,
+\begin{align*}
+	\iiint |Y_{l m}|^2 r^2 \sin \theta \dif r \dif \theta \dif \varphi &= 1
+\end{align*}
+As $Y_{l m}$ is independent of $r$,
+\begin{align*}
+	\iint |Y_{l m}|^2 \sin \theta \dif \theta \dif \varphi &= 1
+\end{align*}
+Therefore, as $Y_{l m}$ is the eigenfunction of $\hat{L}_z$,
+\begin{align*}
+	\hat{L}_z Y_{l m}(\theta,\varphi) &= m \hbar Y_{l m}(\theta,\varphi)
+\end{align*}
+Therefore,
+\begin{align*}
+	\frac{\hbar}{i} \dpd{}{\varphi} Y_{l m}(\theta,\varphi) &= m \hbar Y_{l m}(\theta,\varphi)\\
+	\therefore \dpd{}{\varphi} Y_{l m}(\theta,\varphi) &= i m Y_{l m}(\theta,\varphi)
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	Y_{l m}(\theta,\varphi) &= N_{l m} e^{i m \varphi} f_{l m}(\theta)\\
+	\hat{L}^2 Y_{l m}(\theta,\varphi) &= \hbar l (l + 1) Y_{l m}(\theta,\varphi)
+\end{align*}
+where $N_{l m}$ is the constant of normalization.\\
+For $Y_{l l}$, the eigenfunction corresponding to the highest step in the ladder,
+\begin{align*}
+	0 &= \hat{L}_+ Y_{l l}\\
+	&= \hat{L}_+ \left( N_{l l} e^{i l \varphi} f_{l l}(\theta) \right)\\
+	&= \hbar e^{i \varphi} \left( N_{l l} e^{i l \varphi} \dpd{f_{l l}(\theta)}{\theta} + i \cot \theta N_{l l} l e^{i l \varphi} f_{l l}(\theta) \right)\\
+	&= \hbar e^{i (l + 1) \varphi} N_{l l} \left( \dpd{f_{l l}(\theta)}{\theta} - l \cot \theta f_{l l}(\theta) \right)\\
+	&= \dpd{f_{l l}(\theta)}{\theta} - l \cot \theta f_{l l}(\theta)
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	\therefore f_{l l}(\theta) &\approx (\sin \theta)^l\\
+	\therefore Y_{l l}(\theta,\varphi) &= N_{l l} e^{i l \varphi} (\sin \theta)^l
+\end{align*}
+Therefore, applying $\hat{L}_-$ on $Y_{l l}$,
+\begin{align*}
+	Y_{l m}(\theta,\varphi) &= \varepsilon \sqrt{\frac{(2 l + 1) \left( l - |m| \right)!}{4 \pi \left( l + |m| \right)!}} e^{i m \varphi} f_{l m}(\cos \theta)
+\end{align*}
+where
+\begin{align*}
+	\varepsilon &=
+		\begin{cases}
+			(-1)^m &;\quad m \ge 0\\
+			1 &;\quad m \le 0\\
+		\end{cases}
+\end{align*}
+and $f_{l m}$ is the associated Legendre function.
+
+\section{Hamiltonian Operator in 3D}
+
+In 3D,
+\begin{align*}
+	\hat{H} &= -\frac{\hbar^2}{2 m} \left( \dpd[2]{}{x} + \dpd[2]{}{y} + \dpd[2]{}{z} \right) + V(x,y,z)\\
+	&= -\frac{\hbar^2}{2 m} \nabla^2 + V(x,y,z)
+\end{align*}
+where $m$ is the mass of the particle, and
+\begin{align*}
+	\nabla^2 f &= \frac{1}{r} \dpd[2]{}{r}(r f) + \frac{1}{r^2} \left( \frac{1}{\sin \theta} \dpd{}{\theta}\left( \sin \theta \dpd{f}{\theta} \right) + \frac{1}{\sin^2 \theta} \dpd[2]{f}{\varphi} \right)\\
+	&= \frac{1}{r} \dpd[2]{}{r}(r f) - \frac{\hat{L}^2}{r^2 \hbar^2}
+\end{align*}
+
+\section{Central Potentials}
+
+\begin{definition}
+	A potential $V$, such that
+	\begin{align*}
+		V(r,\theta,\varphi) &= V(r)
+	\end{align*}
+	is called a central potential.
+\end{definition}
+
+Therefore, for a central potential, the Hamiltonian operator is
+\begin{align*}
+	\hat{H} &= -\frac{\hbar^2}{2 m} \nabla^2 + V(r)
+\end{align*}
+where $m$ is the mass of the particle.\\
+Therefore,
+\begin{align*}
+	\left[ \hat{H},\hat{L}_z \right] &= 0\\
+	\left[ \hat{H},\hat{L}^2 \right] &= 0
+\end{align*}
+As $Y_{l m}$ is a basis, any function $f(\theta,\varphi)$ can be expressed as
+\begin{align*}
+	f(\theta,\varphi) &= \sum\limits_{l = 0}^{\infty} \sum\limits_{m = -l}^{l} c_{l m} Y_{l m}(\theta,\varphi)
+\end{align*}
+As for quantum harmonic oscillators,
+\begin{align*}
+	\hat{L}_+ Y_{l m} &= A_{l m} Y_{l (m + 1)}
+\end{align*}
+Similarly,
+\begin{align*}
+	\hat{L}_- Y_{l m} &= B_{l m} Y_{l (m + 1)}
+\end{align*}
+Let
+\begin{align*}
+	f(\theta,\varphi) &= \hat{L}_+ Y_{l m}\\
+	g(\theta,\varphi) &= Y_{l m}
+\end{align*}
+Therefore, the identity
+\begin{align*}
+	\iint f^*(\theta,\varphi) \left( \hat{L}_{\pm} g(\theta,\varphi) \right) \sin \theta \dif \theta \dif \varphi &= \iint \left( L_{\mp} f(\theta,\varphi) \right)^* g(\theta,\varphi) \sin \theta \dif \theta \dif \varphi
+\end{align*}
+implies
+\begin{align*}
+	\iint \left( \hat{L}_+ Y_{l m} \right)^* \left( \hat{L}_+ Y_{l m} \right) \sin \theta \dif \theta \dif \varphi &= \iint |A_{l m}|^2 {Y_{l (m + 1)}}^* Y_{l (m + 1)} \sin \theta \dif \theta \dif \varphi\\
+	&= |A^{l m}|^2
+\end{align*}
+Therefore,
+\begin{align*}
+	\iint \left( \hat{L}_- \hat{L}_+ Y_{l m} \right)^* Y_{l m} \sin \theta \dif \theta \dif \varphi &= \iint \left( \left( \hat{L}_x - i \hat{L}_y \right) \left( \hat{L}_x + i \hat{L}_y \right) Y_{l m} \right)^* Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \iint \left( \left( \hat{L}^2 - {\hat{L}_z}^2 - h \hat{L}_z \right) Y_{l m} \right)^* Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \iint \left( \hbar^2 l (l + 1) - \hbar^2 m^2 \hbar^2 m \right) {Y_{l m}}^* Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \hbar^2 \left( l (l + 1) - m (m + 1) \right) \cdot 1
+\end{align*}
+Therefore,
+\begin{align*}
+	|A_{l m}|^2 &= \hbar^2 \left( l (l + 1) - m (m + 1) \right)
+\end{align*}
+Therefore,
+\begin{align*}
+	A_{l m} &= \hbar \sqrt{l (l + 1) - m (m + 1)}\\
+	B_{l m} &= \hbar \sqrt{l (l + 1) - m (m - 1)}
+\end{align*}
+
+\section{General Form of the Uncertainty Principle}
+
+\begin{theorem}[General Form of the Uncertainty Principle]
+	\begin{align*}
+		{\sigma_A}^2 {\sigma_B}^2 &\ge \left( \frac{1}{2 i} \left\langle \left[ \hat{A},\hat{B} \right] \right\rangle \right)^2
+	\end{align*}
+	\label{thm:General_Form_of_the_Uncertainty_Principle}
+\end{theorem}
+
+\subsection{}<++>
+
+\begin{align*}
+	\hat{L}_+ &= \hat{L}_x + i \hat{L}_y\\
+	\hat{L}_- &= \hat{L}_x - i \hat{L}_y
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{L}_x &= \frac{\hat{L}_+ + \hat{L}_-}{2}\\
+	\hat{L}_y &= \frac{\hat{L}_+ - \hat{L}_-}{2}
+\end{align*}
+Let $Y_{l m}$ be an eigenfunction of $\hat{L}_z$ and $\hat{L}^2$.\\
+Therefore,
+\begin{align*}
+	\left\langle \hat{L}_x \right\rangle &= \iint {Y_{l m}}^* \hat{L}_x Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \iint {Y_{l m}}^* \left( \frac{\hat{L}_+ + \hat{L}_-}{2} \right) Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \frac{A_{l m}}{2} \iint {Y_{l m}}^* Y_{l (m + 1)} \sin \theta \dif \theta \dif \varphi + \frac{B_{l m}}{2} \iint {Y_{l m}}^* Y_{l (m - 1)} \sin \theta \dif \theta \dif \varphi
+\end{align*}
+Therefore, as ${Y_{l m}}^*$, $Y_{l (m + 1)}$, and $Y_{l (m - 1)}$ are mutually orthogonal, their products are zero.
+Therefore,
+\begin{align*}
+	\left\langle \hat{L}_x \right\rangle &= 0 + 0\\
+	&= 0
+\end{align*}
+Similarly,
+\begin{align*}
+	\left\langle \hat{L}_x \right\rangle &= 0 - 0\\
+	&= 0
+\end{align*}
+Also,
+\begin{align*}
+	L_- L_+ &= L^2 - {L_z}^2 - \hbar L_z\\
+	L_+ L_- &= L^2 - {L_z}^2 + \hbar L_z
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{L}_x &= \frac{\hat{L}_+ + \hat{L}_-}{2}\\
+	\therefore {\hat{L}_x}^2 &= \frac{1}{4} \left( {\hat{L}_+}^2 + {\hat{L}_-}^2 + \hat{L}_+ \hat{L}_- + \hat{L}_- \hat{L}_+ \right)
+\end{align*}
+Therefore,
+\begin{align*}
+	\hat{L}_- \hat{L}_+ Y_{l m} &= \hbar^2 \left( l (l + 1) - m (m + 1) \right) Y_{l m}\\
+	\hat{L}_+ \hat{L}_- Y_{l m} &= \hbar^2 \left( l (l + 1) - m (m - 1) \right) Y_{l m}
+\end{align*}
+Therefore,
+\begin{align*}
+	\left\langle {\hat{L}_x}^2 \right\rangle &= \frac{1}{4} \iint {Y_{l m}}^* \left( \hat{L}_+ \hat{L}_- + \hat{L}_- \hat{L}_+ \right) Y_{l m} \sin \theta \dif \theta \dif \varphi\\
+	&= \frac{\hbar^2}{4} \left( 2 l (l + 1) - 2 m^2 \right)\\
+	&= \frac{\hbar^2}{2} \left( l (l + 1) - m^2 \right)
+\end{align*}
+Similarly,
+\begin{align*}
+	\left\langle {\hat{L}_y}^2 \right\rangle &= \frac{\hbar^2}{2} \left( l (l + 1) - m^2 \right)
+\end{align*}
+Therefore,
+\begin{align*}
+	\sigma_{L_x} &= \frac{\hbar}{\sqrt{2}} \sqrt{l (l + 1) - m^2}\\
+	\sigma_{L_y} &= \frac{\hbar}{\sqrt{2}} \sqrt{l (l + 1) - m^2}
+\end{align*}
+Therefore,
+\begin{align*}
+	\sigma_{L_x} \sigma_{L_y} &= \frac{h^2}{2} \left( l (l + 1) - m^2 \right)
+\end{align*}
+Therefore, by the \nameref{thm:General_Form_of_the_Uncertainty_Principle},
+\begin{align*}
+	\sigma_{L_x} \sigma_{L_y} &\ge \frac{1}{2 i} \left\langle i \hbar L_z \right\rangle\\
+	&\ge \frac{1}{2 i} i \hbar \cdot \hbar m
+\end{align*}
+Therefore,
+\begin{align*}
+	\left\langle L_z \right\rangle &= i \hbar m
+\end{align*}
+Therefore,
+\begin{align*}
+	\sigma_{L_x} \sigma_{L_y} &\ge \frac{\hbar^2}{2} m
+\end{align*}
 
 \newpage
 \part{Solid State Physics}
