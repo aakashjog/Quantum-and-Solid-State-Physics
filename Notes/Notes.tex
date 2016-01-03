@@ -1698,7 +1698,7 @@ Therefore, $\psi_n(x)$ is an eigenfunction of $\hat{H}$ with eigenvalue $E_n$.
 \begin{proof}
 	\begin{align*}
 		\langle H \rangle &= \int\limits_{-\infty}^{\infty} \psi^*(x) \hat{H} \psi(x) \dif x\\
-		&= \int\limits_{-\infty}^{\infty} \left( \sum\limits_{n = 1}^{\infty} {c_n}^* {\psi_n}^*(x) \right) \hat{H} \left( \sum\limits_{n = 1}^{\infty} c_n \psi_n(x) \right) \dif x\\
+		&= \int\limits_{-\infty}^{\infty} \left( \sum\limits_{n = 1}^{\infty} {c_n}^* {\psi_n}^*(x) \right) \hat{H} \left( \sum\limits_{m = 1}^{\infty} c_m \psi_m(x) \right) \dif x\\
 		&= \int\limits_{-\infty}^{\infty} \sum\limits_{n = 1}^{\infty} {c_n}^* {\psi_n}^*(x) \sum\limits_{m = 1}^{\infty} c_m E_m \psi_m(x) \dif x\\
 		&= \sum\limits_{n = 1}^{\infty} \sum\limits_{m = 1}^{\infty} {c_n}^* c_m E_m \int\limits_{-\infty}^{\infty} {\psi_n}(x) \psi_m(x) \dif x\\
 		&= \sum\limits_{n = 1}^{\infty} \sum\limits_{m = 1}^{\infty} {c_n}^* c_n E_n \delta_{n m}\\
@@ -1753,7 +1753,7 @@ For $0 < x < a$,
 Therefore,
 \begin{align*}
 	-\frac{\hbar^2}{2 m} \dod[2]{\psi(x)}{x} &= E \psi(x)\\
-	\therefore \dod[2]{\psi(x)}{x} &= -\frac{2 m E}{\hbar^2}
+	\therefore \dod[2]{\psi(x)}{x} &= -\frac{2 m E}{\hbar^2} \psi(x)
 \end{align*}
 Let
 \begin{align*}
@@ -2151,7 +2151,7 @@ Therefore,
 \begin{align*}
 	\psi(x) &= A e^{k x} + B e^{-k x}
 \end{align*}
-For the wave function to be normalizable, $\lim\limits_{x \to \infty} \psi(x)$ must be zero.\\
+For the wave function to be normalizable, $\lim\limits_{x \to -\infty} \psi(x)$ must be zero.\\
 Therefore,
 \begin{align*}
 	0 &= \lim\limits_{x \to -\infty} \psi(x)\\
@@ -2454,7 +2454,7 @@ Therefore,
 \begin{align*}
 	\psi(x) &= A e^{k x} + B e^{-k x}
 \end{align*}
-If $x \to \infty$, as the function is normalizable, $\psi = 0$.\\
+If $x \to -\infty$, as the function is normalizable, $\psi = 0$.\\
 Therefore,
 \begin{align*}
 	B &= 0
@@ -2463,7 +2463,7 @@ Similarly, for $x > 0$,
 \begin{align*}
 	\psi(x) &= C e^{k x} + D e^{-k x}
 \end{align*}
-If $x \to -\infty$, as the function is normalizable, $\psi = 0$.\\
+If $x \to \infty$, as the function is normalizable, $\psi = 0$.\\
 Therefore,
 \begin{align*}
 	C &= 0
@@ -2503,7 +2503,7 @@ By the time independent Schrödinger equation,
 \end{align*}
 Therefore,
 \begin{align*}
-	\int\limits_{-\varepsilon}^{\varepsilon} \psi''(x) \dif x &= -\frac{2 m}{\hbar^2} \left( E + V_0 \delta(x) \right) \psi(x) \dif x\\
+	\int\limits_{-\varepsilon}^{\varepsilon} \psi''(x) \dif x &= \int\limits_{-\varepsilon}^{\varepsilon} -\frac{2 m}{\hbar^2} \left( E + V_0 \delta(x) \right) \psi(x) \dif x\\
 	\therefore \psi'(\varepsilon) - \psi'(-\varepsilon) &= -\frac{2 m}{\hbar^2} \int\limits_{-\varepsilon}^{\varepsilon} E \psi(x) \dif x - \frac{2 m}{\hbar^2} \int\limits_{-\varepsilon}^{\varepsilon} V_0 \delta(x) \psi(x) \dif x\\
 	&= -\frac{2 m}{\hbar^2} \left( E \psi(0) \cdot 2 \varepsilon \right) - \frac{2 m}{\hbar^2} V_0 \psi(0)\\
 	&= -\frac{2 m}{\hbar^2} V_0 \psi(0)\\
@@ -2619,7 +2619,7 @@ As $\psi(x)$ is continuous at $x = 0$,
 \end{align*}
 Therefore, solving,
 \begin{align*}
-	\psi(x) &=
+	\psi'(x) &=
 		\begin{cases}
 			i k \left( A e^{i k x} - B e^{-i k x} \right) &;\quad x < 0\\
 			i k C e^{i k x} &;\quad 0 < x\\
@@ -2717,7 +2717,7 @@ Therefore,
 Therefore,
 \begin{align*}
 	\psi(-a + \varepsilon) &= \psi(-a - \varepsilon)\\
-	\therefore A e^{-k a} & B \left( e^{-k a} + e^{k a} \right)\\
+	\therefore A e^{-k a} &= B \left( e^{-k a} + e^{k a} \right)\\
 	\psi'(-a + \varepsilon) - \psi'(-a - \varepsilon) &= -\frac{2 m \alpha}{\hbar^2} \psi(-a)\\
 	\therefore k B \left( e^{-k a} - e^{k a} \right) - k A e^{-k a} &= -\frac{2 m \alpha}{\hbar^2} A e^{-k a}
 \end{align*}
@@ -2749,7 +2749,7 @@ Therefore, for $\psi_{\text{odd}}(x)$,
 \end{align*}
 Therefore,
 \begin{align*}
-	\psi_{\text{even}}(x) &=
+	\psi_{\text{odd}}(x) &=
 		\begin{cases}
 			-A e^{k x} &;\quad x < -a\\
 			B \left( e^{k x} - e^{-k x} \right) &;\quad -a < x < a\\
@@ -2809,15 +2809,15 @@ Similarly, the probability current for the reflected wave is
 \begin{align*}
 	J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)\\
 	J_R(x,t) &= \frac{i \hbar}{2 m} \left( \psi_R \dpd{{\psi_R}^*}{x} - {\psi_R}^* \dpd{\psi_R}{x} \right)\\
-	&= \frac{i \hbar}{2 m} \left( i k |A|^2 + i k |A|^2 \right)\\
-	&= -\frac{\hbar |A|^2 k}{m}
+	&= \frac{i \hbar}{2 m} \left( i k |B|^2 + i k |B|^2 \right)\\
+	&= -\frac{\hbar |B|^2 k}{m}
 \end{align*}
 Similarly, the probability current for the incident wave is
 \begin{align*}
 	J(x,t) &= \frac{i \hbar}{2 m} \left( \psi \dpd{\psi^*}{x} - \psi^* \dpd{\psi}{x} \right)\\
 	J_T(x,t) &= \frac{i \hbar}{2 m} \left( \psi_T \dpd{{\psi_T}^*}{x} - {\psi_T}^* \dpd{\psi_T}{x} \right)\\
-	&= \frac{i \hbar}{2 m} \left( -i k |A|^2 - i k |A|^2 \right)\\
-	&= \frac{\hbar |A|^2 k}{m}
+	&= \frac{i \hbar}{2 m} \left( -i k |C|^2 - i k |C|^2 \right)\\
+	&= \frac{\hbar |C|^2 k}{m}
 \end{align*}
 Let the transmission and reflection coefficients be $T$ and $R$ respectively.
 Therefore, substituting the boundary conditions,
@@ -2834,7 +2834,7 @@ Therefore,
 	T + R &= 1
 \end{align*}
 This is consistent with the expectations, as the total energy must be conserved.\\
-The fact that $T \neq 0$ shows that even though the barrier exists, the particle does not bounce back, but instead tunnels through th barrier.
+The fact that $T \neq 0$ shows that even though the barrier exists, the particle does not bounce back, but instead tunnels through the barrier.
 A classical particle would not exhibit such a behaviour.
 
 \subsection{Finite Barrier}
@@ -2878,7 +2878,7 @@ Hence, due to tunnelling, a quantum particle can go through this barrier, and th
 where
 \begin{align*}
 	k_1 &= \sqrt{\frac{2 m E}{\hbar^2}}\\
-	k_1 &= \sqrt{-\frac{2 m (E - V_0)}{\hbar^2}}
+	k_2 &= \sqrt{-\frac{2 m (E - V_0)}{\hbar^2}}
 \end{align*}
 Therefore, solving as for the $\delta$ barrier,
 \begin{align*}
