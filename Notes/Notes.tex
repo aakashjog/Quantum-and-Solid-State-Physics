@@ -130,8 +130,8 @@
 
 \begin{document}
 
-\pagenumbering{roman}
 \maketitle
+\pagenumbering{roman}
 %\setlength{\mathindent}{0pt}
 
 \blfootnote
@@ -6590,11 +6590,17 @@ If there is no electric field acting on the semiconductor, the concentration of 
 	\caption{Concentration of Holes Generated due to a Pulse of Light, without Electric Field}
 	\label{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_without_Electric_Field}
 \end{figure}
-If there is an electric field $\overrightarrow{E}$ acting on the semiconductor, acting towards the right, the concentration of holes is as in Figure \ref{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_with_Electric_Field}.
+If there is an electric field $\overrightarrow{E}$ acting on the semiconductor, acting towards the right, the concentration of holes is as in Figure \ref{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_with_Electric_Field}.\\
+If recombination occurs, the number of available holes reduces.
+Therefore, the area under the curve of the excess carrier concentration reduces.\\
+Therefore, the excess carrier concentration is given by
+\begin{align*}
+	\hat{p}(x,t) &= \left( \frac{\hat{p}(x,0)}{2 \sqrt{\pi D_p t}} e^{-\frac{x^2}{4 D_p t}} \right) e^{-\frac{t}{\tau_p}}
+\end{align*}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.8\textwidth]{fig-pulse_of_light_with_electric_field.pdf}
-	\caption{Concentration of Holes Generated due to a Pulse of Light, without Electric Field}
+	\caption{Concentration of Holes Generated due to a Pulse of Light, with Electric Field}
 	\label{fig:Concentration_of_Holes_Generated_due_to_a_Pulse_of_Light_with_Electric_Field}
 \end{figure}
 Therefore, the effect of the pulse can be felt at the end, such that
@@ -6604,5 +6610,120 @@ Therefore, the effect of the pulse can be felt at the end, such that
 	&= \frac{L}{E t_d}
 \end{align*}
 Therefore, the properties of minority carriers can be experimentally measured, using this technique.
+
+\section{Quasi-neutrality}
+
+\subsection{Carrier Concentration Gradient due to Illumination Only}
+
+Consider a N-type semiconductor, masked everywhere except for a thin slit in the middle.\\
+By \nameref{Einstein's_Relation},
+\begin{align*}
+	\frac{D_n}{\mu_n} &= \frac{k T}{q}\\
+	\frac{D_p}{\mu_p} &= \frac{k T}{q}
+\end{align*}
+As electrons are lighter than holes, their mobility is higher.
+Therefore, $\mu_n > \mu_p$, i.e. electrons diffuse faster than holes.
+Therefore, the excess carrier concentration profiles will be as in Figure \ref{fig:Expected_Excess_Carrier_Concentration_in_N-type_Sample_with_Constant_Illumination_Through_Narrow_Slit_Only}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{fig-expected_profile_with_constant_illumination_through_slit.pdf}
+	\caption{Expected Excess Carrier Concentration in N-type Sample with Constant Illumination Through Narrow Slit Only}
+	\label{fig:Expected_Excess_Carrier_Concentration_in_N-type_Sample_with_Constant_Illumination_Through_Narrow_Slit_Only}
+\end{figure}
+However, as electrons and holes have opposite charges, the separation between them creates an internal attractive electric field between them.
+Therefore, the real excess carrier concentration profiles will be identical, as in Figure \ref{fig:Expected_Excess_Carrier_Concentration_in_N-type_Sample_with_Constant_Illumination_Through_Narrow_Slit_Only}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{fig-actual_profile_with_constant_illumination_through_slit.pdf}
+	\caption{Actual Excess Carrier Concentration in N-type Sample with Constant Illumination Through Narrow Slit Only}
+	\label{fig:Actual_Excess_Carrier_Concentration_in_N-type_Sample_with_Constant_Illumination_Through_Narrow_Slit_Only}
+\end{figure}
+This behaviour is called quasi neutrality.\\
+~\\
+In general, if there is a relatively small internal electric field, the excess electrons and holes are forced to drift and diffuse together, i.e., if $\overrightarrow{E}_{\text{internal}} \approx 0$,
+\begin{align*}
+	\hat{n}(x) &= \hat{p}(x)
+\end{align*}
+Such a semiconductor is said to be quasi neutral.
+In such a case, the transport is dominated by minority carriers, and the excess majority carriers follow the minority.
+
+\begin{question}
+	Consider a P-type semiconductor, masked everywhere except for a thin slit in the middle.\\
+	Given $D_p >> D_n$, what is the direction of the built-in electric fields?
+\end{question}
+
+\begin{solution}
+	As $D_p >> D_n$,
+	\begin{align*}
+		\mu_p &>> \mu_n
+	\end{align*}
+	Therefore, as the minority carriers dominate the transport, the holes move according to the electrons.
+	Therefore, the electric field is directed inwards, towards the slit.
+\end{solution}
+
+\subsection{Carrier Concentration Gradient due to Doping Variation Only}
+
+Consider a N-type semiconductor sample with concentration gradient
+\begin{align*}
+	n(x) &= N_d(x)
+\end{align*}
+Let the doping profile be linearly graded, i.e. let $N_d(x)$ grow linearly with $x$.
+Let
+\begin{align*}
+	N_d(x = 0) &= 10^{15} \si{\per\centi\metre\cubed}\\
+	N_d(x = L) &= 10^{16} \si{\per\centi\metre\cubed}
+\end{align*}
+Therefore, the electrons tend to move towards the left.
+However, the excess fixed positive charges on the right create an attractive force on the electrons, towards the right.
+Therefore, the internal electric field, which opposes diffusion is directed towards the left.
+
+\subsection{Calculation of Internal Electric Field}
+
+Consider a N-type, quasi neutral sample in which the total current density is zero.
+Therefore,
+\begin{align*}
+	0 &= J_n\\
+	&= q \mu_n n(x) \overrightarrow{E}(x) + q D_n \dod{n(x)}{x}\\
+	\therefore \overrightarrow{E}(x) &= -\frac{D_n}{\mu_n} \frac{1}{n(x)} \dod{n(x)}{x}\\
+	&= -\frac{k T}{q} \frac{1}{n(x)} \dod{n(x)}{x}
+\end{align*}
+Therefore, as the sample is quasi neutral, $n(x) = N_d(x)$.
+Therefore,
+\begin{align*}
+	\overrightarrow{E}(x) &= -\frac{k T}{q} \frac{1}{N_d(x)} \dod{N_d(x)}{x}
+\end{align*}
+Therefore, the internal voltage drop across the internal field region is
+\begin{align*}
+	V &= -\int E \dif x\\
+	&= -\frac{k T}{q} \int\limits_{x_1}^{x_2} \frac{1}{N_d(x)} \dod{N_d(x)}{x} \dif x
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	|V| &= \frac{k T}{q} \ln\left( \frac{N_d(x_2)}{x_1)} \right)
+\end{align*}
+This built-in voltage is denoted as $V_{\text{BI}}$.\\
+Therefore the intrinsic energy of the sample is given by
+\begin{align*}
+	\overrightarrow{E} &= -\dod{V(x)}{x}\\
+	&= \frac{1}{q} \dod{E_i}{x}
+\end{align*}
+
+\begin{question}
+	The doping profile in a N-type sample is given to be
+	\begin{align*}
+		N_d(x) &= N_0 e^{-\alpha x}
+	\end{align*}
+	Assuming that the sample is at equilibrium, find the internal electric field.
+\end{question}
+
+\begin{solution}
+	As the sample is at equilibrium and is not illuminated, the sample is quasi neutral.
+	Therefore,
+	\begin{align*}
+		E(x) &= -\frac{k T}{q} \frac{1}{N_d(x)} \dod{N_d(x)}{x}\\
+		&= -\frac{k T}{q} \frac{1}{N_0 e^{-\alpha x}} \dod{}{x} N_0 e^{-\alpha x}\\
+		&= \frac{k T \alpha}{q}
+	\end{align*}
+\end{solution}
 
 \end{document}
