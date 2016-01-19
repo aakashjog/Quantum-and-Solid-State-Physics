@@ -1,0 +1,230 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+%\usepackage[top = 2cm, bottom = 1cm, left = 1cm, right = 1cm]{geometry}
+\usepackage{exsheets, tasks}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+	\sisetup
+	{
+		per-mode=fraction,
+		fraction-function=\frac
+	}
+\usepackage{tikz, pgfplots} %diagrams
+\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{ulem} %underline for \emph{}
+\usepackage{xfrac} %inline fractions
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{todonotes}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\newcommand{\AxisRotator}[1][rotate=0]{
+	\tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+} %rotation symbols on axes
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\curl}{\mathrm{curl\,}}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\thesubsection}{(\arabic{subsection})}
+\renewcommand{\thesection}{(\arabic{section})}
+
+\renewcommand{\emph}{\uline}
+
+\renewcommand{\tilde}{\widetilde}
+
+%section headings on left
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+	\z@{\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\centering}}% DELETED
+	{\normalfont}}% NEW
+\def\section{\@startsection{section}{1}%
+	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+	%  {\normalfont\scshape\centering}}% DELETED
+	{\normalfont\scshape}}% NEW
+\makeatother
+
+%forces newline after subsection
+\makeatletter
+\def\subsection{\@startsection{subsection}{3}%
+	\z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+	{\normalfont\itshape}}
+\makeatother
+
+\settasks{counter-format = tsk[1].}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title{Quantum and Solid State Physics : Assignment 13}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{19}{1}{2016}}
+
+\begin{document}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	Suppose we have a PN junction at equilibrium, which means we bring in contact a P-type material and an N-type material, with contacts at both ends attached to ground.
+	The net current across the device is zero, i.e.
+	\begin{align*}
+		J_{\text{total}} & = 0
+	\end{align*}
+	Explain why we expect to have a built-in electric field in this device.
+\end{question}
+
+\begin{solution}
+	As the two parts of the junction are P-type and N-type, they have excess holes and electrons, respectively.
+	Therefore, due to the carrier gradients, the electrons from the N-type part, and the holes from the P-type part drift towards the respective other regions.
+	Therefore the N-type part is positively charged, and the P-type part is negatively charged.
+	Therefore, an electric field must be generated.
+\end{solution}
+
+\begin{question}
+	At $t = 0$, consider the electron in an Hydrogen atom, described by the wave function
+	\begin{align*}
+		\psi & = \frac{1}{6} \left( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{10} \psi_{2 1 (-1)} \right)
+	\end{align*}
+	where $\psi_{n l m}$ are normalized eigenfunctions of the energy operator for the Coulomb potential.
+	\begin{enumerate}
+		\item
+			Suppose we measure the energy of the electron, what energies can we measure, in \si{\electronvolt} and with what probabilities?
+		\item
+			Suppose we measure the energy corresponding to the lowest probability from above.
+			Write $\psi(r,\theta,\varphi,t)$ after the measurement, in the form $\psi_{n l m}$.
+			Is the electron in a stationary state?
+	\end{enumerate}
+	Consider the original electron described by
+	\begin{align*}
+		\psi & = \frac{1}{6} \left( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{10} \psi_{2 1 (-1)} \right)
+	\end{align*}
+	\begin{enumerate}[resume]
+		\item
+			Suppose we measure the total angular momentum $L^2$ of the electron, what values can we measure, in terms of $\hbar$, and with what probabilities?
+		\item
+			Suppose we measure the total angular momentum $L^2$ of the electron, and the result is $2 \hbar^2$.
+			Write down $\psi(r,\theta,\varphi)$ after the measurement, in the form $\psi_{n l m}$.
+			Hint: You should have three unknown parameters in your answer.
+		\item
+			Suppose that now we measure the angular momentum in the $x$-direction, $L_x$, of the electron above, right after the measurement done above.
+			The result is $\hbar$.
+			Find the three unknown parameters above.
+			In your solution, assume that $\psi(r,\theta,\varphi)$ you found above is an eigenstate of $L_x$.
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			The energy level corresponding to $\psi_{1 0 0}$ is
+			\begin{align*}
+				E_1 & = -13.6 \si{\electronvolt}
+			\end{align*}
+			The energy level corresponding to $\psi_{2 1 1}$ is
+			\begin{align*}
+				E_2 & = -\frac{13.6}{4} \si{\electronvolt}
+			\end{align*}
+			The energy level corresponding to $\psi_{2 1 0}$ is
+			\begin{align*}
+				E_2 & = -\frac{13.6}{4} \si{\electronvolt}
+			\end{align*}
+			The energy level corresponding to $\psi_{2 1 (-1)}$ is
+			\begin{align*}
+				E_2 & = -\frac{13.6}{4} \si{\electronvolt}
+			\end{align*}
+			Therefore, the probability of the measured energy being $E_1$ is
+			\begin{align*}
+				P(E_1) & = \left( \frac{4}{6} \right)^2 \\
+                                       & = \frac{16}{36}                \\
+                                       & = \frac{4}{9}
+			\end{align*}
+			Therefore, the probability of the measured energy being $E_2$ is
+			\begin{align*}
+				P(E_2) & = \left( \frac{3}{6} \right)^2 + \left( \frac{-1}{6} \right)^2 + \left( \frac{\sqrt{10}}{6} \right)^2 \\
+                                       & = \frac{5}{9}
+			\end{align*}
+		\item
+			If the energy corresponding to the lowest probability, i.e. $E_1$ is measured,
+			\begin{align*}
+				\psi(r,\theta,\varphi,t) & = \psi(r,\theta,\varphi,0) e^{-\frac{i E_1 t}{\hbar}} \\
+                                                         & = \frac{2}{3} \psi_{1 0 0} e^{-\frac{i E_1 t}{\hbar}}
+			\end{align*}
+			Therefore, the electron is in a stationary state.
+		\item
+			The value of $L^2$ corresponding to $\psi_{1 0 0}$ is
+			\begin{align*}
+				l (l + 1) \hbar^2 & = 0
+			\end{align*}
+			The value of $L^2$ corresponding to $\psi_{2 1 1}$ is
+			\begin{align*}
+				l (l + 1) \hbar^2 & = 2 \hbar^2
+			\end{align*}
+			The value of $L^2$ corresponding to $\psi_{2 1 0}$ is
+			\begin{align*}
+				l (l + 1) \hbar^2 & = 2 \hbar^2
+			\end{align*}
+			The value of $L^2$ corresponding to $\psi_{2 1 (-1)}$ is
+			\begin{align*}
+				l (l + 1) \hbar^2 & = 2 \hbar^2
+			\end{align*}
+			Therefore, the probability of the measured value of $L^2$ being $0$ is
+			\begin{align*}
+				P(0) & = \left( \frac{4}{6} \right)^2 \\
+                                     & = \frac{4}{9}
+			\end{align*}
+			Therefore, the probability of the measured value of $L^2$ being $2 \hbar^2$ is
+			\begin{align*}
+				P\left( 2 \hbar^2 \right) & = \left( \frac{3}{6} \right)^2 + \left( \frac{-1}{6} \right)^2 + \left( \frac{\sqrt{10}}{6} \right)^2 \\
+                                                          & = \frac{5}{9}
+			\end{align*}
+		\item
+			\begin{align*}
+				\psi(r,\theta,\varphi) & = \frac{1}{6} \left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right)
+			\end{align*}
+		\item
+			\begin{align*}
+				\hat{L}_x & = \frac{\hat{L}_+ + \hat{L}_-}{2}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\hat{L}_x \psi & = \frac{1}{2} \hat{L}_+ \psi + \frac{1}{2} \hat{L}_- \psi                                                   \\
+                                               & = \quad \frac{1}{2} \frac{1}{6} \hat{L}_+\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right) \\
+                                               & \quad + \frac{1}{2} \frac{1}{6} \hat{L}_-\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right) \\
+                                               & = \quad \frac{1}{12} \left( A \psi_{2 2 1} + B \psi_{2 2 0} + C \psi_{2 2 (-1)} \right)                     \\
+                                               & \quad + \frac{1}{12} \left( A \psi_{2 0 1} + B \psi_{2 0 0} + C \psi_{2 0 (-1)} \right)                     \\
+                                               & = \frac{A}{12} \left( \psi_{2 2 1} + \psi_{2 0 1} \right) + \frac{B}{12} \left( \psi_{2 2 0} + \psi_{2 0 0} \right) + \frac{C}{12} \left( \psi_{2 2 (-1)} + \psi_{2 0 (-1)} \right)
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\end{document}
