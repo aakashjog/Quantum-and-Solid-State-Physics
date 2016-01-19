@@ -217,12 +217,63 @@
 			\end{align*}
 			Therefore,
 			\begin{align*}
-				\hat{L}_x \psi & = \frac{1}{2} \hat{L}_+ \psi + \frac{1}{2} \hat{L}_- \psi                                                   \\
-                                               & = \quad \frac{1}{2} \frac{1}{6} \hat{L}_+\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right) \\
-                                               & \quad + \frac{1}{2} \frac{1}{6} \hat{L}_-\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right) \\
-                                               & = \quad \frac{1}{12} \left( A \psi_{2 2 1} + B \psi_{2 2 0} + C \psi_{2 2 (-1)} \right)                     \\
-                                               & \quad + \frac{1}{12} \left( A \psi_{2 0 1} + B \psi_{2 0 0} + C \psi_{2 0 (-1)} \right)                     \\
-                                               & = \frac{A}{12} \left( \psi_{2 2 1} + \psi_{2 0 1} \right) + \frac{B}{12} \left( \psi_{2 2 0} + \psi_{2 0 0} \right) + \frac{C}{12} \left( \psi_{2 2 (-1)} + \psi_{2 0 (-1)} \right)
+				\hat{L}_x \psi & = \frac{1}{2} \hat{L}_+ \psi + \frac{1}{2} \hat{L}_- \psi                                                                                                      \\
+                                               & = \quad \frac{1}{2} \frac{1}{6} \hat{L}_+\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right)                                                    \\
+                                               & \quad + \frac{1}{2} \frac{1}{6} \hat{L}_-\left( A \psi_{2 1 1} + B \psi_{2 1 0} + C \psi_{2 1 (-1)} \right)                                                    \\
+                                               & = \quad \frac{1}{12} A A_{l (m + 1)} \psi_{2 1 2} + B B_{l (m + 1)} \psi_{2 1 1} + C C_{l (m + 1)} \psi_{2 1 0}                                                \\
+                                               & \quad + \frac{1}{12} A A_{l (m - 1)} \psi_{2 1 0} + B B_{l (m - 1)} \psi_{2 1 -1} + C C_{l (m - 1)} \psi_{2 1 (-2)}                                            \\
+                                               & = \quad \frac{1}{12} A \hbar \sqrt{l (l + 1) - m (m + 1)} \psi_{2 1 2}                                                                                         \\
+                                               & \quad + \frac{1}{12} B \hbar \sqrt{l (l + 1) - m (m + 1)} \psi_{2 1 1}                                                                                         \\
+                                               & \quad + \frac{1}{12} C \hbar \sqrt{l (l + 1) - m (m + 1)} \psi_{2 1 0}                                                                                         \\
+                                               & \quad + \frac{1}{12} A \hbar \sqrt{l (l + 1) - m (m - 1)} \psi_{2 1 0}                                                                                         \\
+                                               & \quad + \frac{1}{12} B \hbar \sqrt{l (l + 1) - m (m - 1)} \psi_{2 1 (-1)}                                                                                      \\
+                                               & \quad + \frac{1}{12} C \hbar \sqrt{l (l + 1) - m (m - 1)} \psi_{2 1 (-2)}                                                                                      \\
+                                               & = \quad \frac{1}{12} A \hbar \sqrt{2 - 2} \psi_{2 1 2} + \frac{1}{12} B \hbar \sqrt{2 - 0} \psi_{2 1 1} + \frac{1}{12} C \hbar \sqrt{2 - 0} \psi_{2 1 0}       \\
+                                               & \quad + \frac{1}{12} A \hbar \sqrt{2 - 0} \psi_{2 1 0} + \frac{1}{12} B \hbar \sqrt{2 - 0} \psi_{2 1 (-1)} + \frac{1}{12} C \hbar \sqrt{2 - 2} \psi_{2 1 (-2)} \\
+                                               & = \quad \frac{1}{12} B \hbar \sqrt{2} \psi_{2 1 1} + \frac{1}{12} C \hbar \sqrt{2} \psi_{2 1 0}                                                                \\
+                                               & \quad + \frac{1}{12} A \hbar \sqrt{2} \psi_{2 1 0} + \frac{1}{12} B \hbar \sqrt{2} \psi_{2 1 (-1)}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\frac{1}{6} \left( \hat{L}_x A \psi_{2 1 1} + \hat{L}_x B \psi_{2 1 0} + \hat{L}_x C \psi_{2 1 (-1)} \right) & = \quad \frac{1}{12} B \hbar \sqrt{2} \psi_{2 1 1} + \frac{1}{12} C \hbar \sqrt{2} \psi_{2 1 0}    \\
+                                                                                                                                             & \quad + \frac{1}{12} A \hbar \sqrt{2} \psi_{2 1 0} + \frac{1}{12} B \hbar \sqrt{2} \psi_{2 1 (-1)} \\
+                                                                                                                                             & = \quad \frac{1}{6} \left( \frac{1}{\sqrt{2}} \hbar B \psi_{2 1 1} \right)                         \\
+                                                                                                                                             & \quad + \frac{1}{6} \left( \frac{1}{\sqrt{2}} (C \hbar + A \hbar) \psi_{2 1 0} \right)             \\
+                                                                                                                                             & \quad + \frac{1}{6} \left( \frac{1}{\sqrt{2}} B \hbar \psi_{2 1 (-1)} \right)
+			\end{align*}
+			Therefore, as the measured value is $\hbar$,
+			\begin{align*}
+				\hbar & = \frac{\hbar B}{\sqrt{2} A}       \\
+				\hbar & = \frac{\hbar (C + A)}{\sqrt{2} B} \\
+				\hbar & = \frac{\hbar B}{\sqrt{2} C}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				B     & = \sqrt{2} A \\
+				C + A & = \sqrt{2} B \\
+				B     & = \sqrt{2} C
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				C & = A \\
+				B & = \sqrt{2} A
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\psi(r,\theta,\varphi) & = \frac{1}{6} \left( A \psi_{2 1 1} + \sqrt{2} A \psi_{2 1 0} + A \psi_{2 1 (-1)} \right)
+			\end{align*}
+			Therefore, normalizing,
+			\begin{align*}
+				1 & = \frac{|A|^2}{36} (1 + 2 + 1) \\
+                                  & = \frac{|A|^2}{9}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				|A|^2 & = 9
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				A & = 3
 			\end{align*}
 	\end{enumerate}
 \end{solution}
